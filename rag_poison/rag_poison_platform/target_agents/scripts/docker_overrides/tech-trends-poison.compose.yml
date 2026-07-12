@@ -1,0 +1,5 @@
+# Poison-test override: expose Redis Stack to host (avoid port 6379 conflicts).
+services:
+  redis:
+    ports:
+      - "6380:6379"

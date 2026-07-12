@@ -1,0 +1,8 @@
+{
+  "latest_run_dir": "D:\\MYHIT\\MYHIT_DAY\\临时文件\\memory_attack\\plugin\\results\\20260608_212010",
+  "updated_at": "2026-06-08T22:25:00",
+  "experiment_type": "attack",
+  "pilot_mode": false,
+  "holdout_mode": false,
+  "note": "主实验：neutral prompt, repeats=3, 隔离污染模式"
+}

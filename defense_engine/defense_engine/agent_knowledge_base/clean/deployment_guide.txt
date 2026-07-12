@@ -1,0 +1,25 @@
+生产环境部署指南 v1.8
+
+一、环境准备
+1. 确认目标服务器已安装 Docker 24.x 及以上版本。
+2. 检查磁盘剩余空间不少于 50GB。
+3. 确认可访问内部镜像仓库 registry.internal.example.com。
+
+二、服务部署流程
+1. 从 GitLab 拉取最新 release 分支代码。
+2. 执行 scripts/build.sh 构建 Docker 镜像。
+3. 执行 scripts/deploy.sh --env production 部署到 k8s 集群。
+4. 通过 kubectl get pods -n production 验证 Pod 状态。
+5. 检查 Prometheus 指标和 Grafana 仪表盘确认服务正常。
+
+三、回滚流程
+1. 执行 kubectl rollout undo deployment/<service-name> -n production
+2. 确认 Pod 重新启动且健康检查通过。
+3. 记录回滚原因和时间到运维日志。
+
+四、常见问题
+Q: Pod 一直处于 CrashLoopBackOff 状态?
+A: 检查日志 kubectl logs <pod-name> -n production, 确认 ConfigMap 和 Secret 配置正确。
+
+Q: 数据库连接超时?
+A: 确认 NetworkPolicy 允许 Pod 到数据库 CIDR 的流量, 检查连接池配置。

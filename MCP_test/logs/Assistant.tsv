@@ -1,0 +1,7 @@
+ 	Task	Responder	sender_entity	sender_name	recipient	block	tool_type	tool	content
+*	Assistant	Entity.SYSTEM	Entity.SYSTEM	Assistant		None			Use tools when helpful. Follow tool descriptions. === GUIDELINES ON SOME TOOLS/F...ust express your request as "TOOL:" followed by the request in the above format.
+*	Assistant	Entity.USER	Entity.USER	Assistant		None			请帮我算 (3+5)*2
+ 	Assistant	Entity.USER	Entity.USER	Entity.USER		None			[CANNOT RESPOND]
+ 	Assistant	Entity.AGENT	Entity.USER			None			
+*	Assistant	Entity.LLM	Entity.LLM			None	TOOL	calculator	好的，我来帮你计算 (3+5)*2。 TOOL: { "request": "calculator", "user_input": "(3+5)*2" }
+*	Assistant	Entity.AGENT	Entity.AGENT	Assistant		None			{"status": "executed", "received": {"user_input": "(3+5)*2"}}

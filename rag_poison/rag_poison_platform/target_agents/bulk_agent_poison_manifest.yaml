@@ -1,0 +1,265 @@
+# Per-agent poison-test overrides for bulk_registry install_success agents.
+# Used by run_github_http_rag_poison_matrix.py and prepare_bulk_agents_for_poison.py
+
+agents:
+  fastapi-meets-langgraph:
+    tier: C
+    rag_capable: false
+    entry_module: src.app.main:app
+    cwd: repo
+    chat_endpoint: /agents/invoke
+    http_method: POST
+    request_format: invoke_query
+    query_param_name: prompt
+    ingest_style: none
+    notes: LangGraph demo, not doc-RAG; query-only smoke
+
+  rag-with-langchain-and-fastapi:
+    tier: A
+    rag_capable: true
+    entry_module: main:app
+    cwd: repo
+    chat_endpoint: /query/
+    http_method: GET
+    query_param_name: query
+    ingest_endpoint: /documents
+    reset_endpoint: /reset
+    ingest_style: http_documents
+    kb_path: data
+    patch_files: true
+    notes: FAISS RAG; test-only /documents + /reset patch
+
+  langgraph-agents:
+    tier: A
+    rag_capable: true
+    entry_module: main:app
+    cwd: repo
+    chat_endpoint: /chat
+    ingest_endpoint: /embed
+    http_method: POST
+    request_format: message
+    ingest_style: http_embed
+    collection_per_case: true
+    reset_endpoint: /reset
+    patch_files: true
+    notes: Chroma via /embed + /chat multipurpose
+
+  langserve:
+    tier: B
+    rag_capable: true
+    entry_module: server:app
+    cwd: examples/retrieval
+    chat_endpoint: /invoke
+    ingest_endpoint: /test_ingest
+    reset_endpoint: /reset
+    http_method: POST
+    request_format: invoke_input
+    ingest_style: http_documents
+    patch_files: true
+    notes: LangServe FAISS retriever example with test_ingest patch
+
+  llama_index:
+    tier: skip
+    rag_capable: false
+    notes: Framework monorepo, no HTTP RAG server
+
+  gpt-researcher:
+    tier: B
+    rag_capable: partial
+    entry_module: backend.server.app:app
+    cwd: repo
+    env_pythonpath: D:\AI\target_agents_bulk\gpt-researcher\repo
+    chat_endpoint: /api/chat
+    ingest_endpoint: /upload/
+    http_method: POST
+    request_format: gpt_researcher_chat
+    ingest_style: http_upload
+    lock_query_endpoint: true
+    notes: Research agent; upload + /api/chat requires report+messages
+
+  sample-app-aoai-chatgpt:
+    tier: C
+    rag_capable: partial
+    entry_module: app:app
+    cwd: repo
+    server_type: quart
+    chat_endpoint: /conversation
+    http_method: POST
+    request_format: messages
+    ingest_style: none
+    notes: Azure stack required
+
+  chat-langchain:
+    tier: skip
+    rag_capable: false
+    entry_module: src.api.fastapi_app:app
+    cwd: repo
+    chat_endpoint: /generate-title
+    notes: Helper API only, no RAG query
+
+  agent-service-toolkit:
+    tier: B
+    rag_capable: true
+    entry_module: service:app
+    cwd: src
+    chat_endpoint: /invoke
+    http_method: POST
+    request_format: message
+    ingest_style: file_kb
+    kb_path: data
+    start_env:
+      DATABASE_TYPE: sqlite
+      USE_FAKE_MODEL: "false"
+    notes: LangGraph invoke + file-based Chroma corpus under data/
+
+  fastapi-langgraph-agent-production-ready-templat:
+    tier: C
+    rag_capable: partial
+    entry_module: app.main:app
+    cwd: repo
+    chat_endpoint: /api/v1/chatbot/chat
+    http_method: POST
+    request_format: message
+    ingest_style: none
+    requires_auth: true
+    notes: Postgres + mem0 memory
+
+  tech-trends-chatbot:
+    tier: B
+    rag_capable: true
+    entry_module: app.main:app
+    cwd: backend
+    chat_endpoint: /chats/{chat_id}
+    http_method: POST
+    request_format: tech_trends_sse
+    ingest_style: file_kb
+    kb_path: backend/data/docs
+    requires_redis: true
+    notes: Redis vector; txt loader via tech_trends_poison_load.py
+
+  ai-chatkit:
+    tier: B
+    rag_capable: true
+    entry_module: main:app
+    cwd: backend/app
+    chat_endpoint: /chat/invoke
+    http_method: POST
+    request_format: message
+    ingest_style: file_kb
+    kb_path: storage
+    notes: Chroma RAG; DeepSeek via OPENAI compat
+
+  enterprise-rag-chatbot:
+    tier: A
+    rag_capable: true
+    entry_module: src.app.main:app
+    cwd: repo
+    chat_endpoint: /api/v1/chat
+    ingest_endpoint: /api/v1/documents/upload
+    http_method: POST
+    request_format: enterprise_chat
+    ingest_style: http_upload
+    env_pythonpath: "."
+    start_env:
+      LLM_PROVIDER: vllm
+      VLLM_BASE_URL: https://api.deepseek.com
+      VLLM_MODEL_NAME: deepseek-chat
+      VECTOR_DB_TYPE: chroma
+      USE_UNIFIED_PROVIDER: "false"
+    notes: Chroma + DeepSeek via vLLM OpenAI-compat shim
+
+  openhands:
+    tier: skip
+    rag_capable: false
+    entry_module: openhands.app_server.app:app
+    cwd: repo
+    notes: Agent platform, not doc-RAG
+
+  streamer-sales:
+    tier: C
+    rag_capable: true
+    entry_module: server.base.base_server:app
+    cwd: repo
+    chat_endpoint: /streamer-sales/chat
+    ingest_endpoint: /upload/file
+    ingest_style: http_upload
+    requires_docker: true
+    notes: Chinese LLM stack + PostgreSQL
+
+  rag-template:
+    tier: A
+    rag_capable: true
+    entry_module: main:app
+    cwd: services/rag-backend
+    chat_endpoint: /chat/{session_id}
+    ingest_endpoint: /information_pieces/upload
+    http_method: POST
+    request_format: message
+    ingest_style: http_upload
+    requires_qdrant: true
+    notes: Qdrant + upload
+
+  medgraph-ai:
+    tier: B
+    rag_capable: true
+    entry_module: main:app
+    cwd: chatbot_api/src
+    chat_endpoint: /hospital-rag-agent
+    http_method: POST
+    request_format: text
+    ingest_style: none
+    requires_neo4j: true
+    notes: Neo4j graph RAG
+
+  ned-admission-llm-chatbot-fyp:
+    tier: A
+    rag_capable: true
+    entry_module: main:app
+    cwd: repo
+    chat_endpoint: /llm_on_cpu
+    ingest_endpoint: /chatbot_data/uploadfiles
+    http_method: POST
+    request_format: question
+    ingest_style: http_upload
+    requires_auth: true
+    notes: FAISS + Pinecone upload
+
+  ai-healthcare-system:
+    tier: B
+    rag_capable: true
+    entry_module: backend.main:app
+    cwd: repo
+    chat_endpoint: /chat
+    ingest_endpoint: /records
+    http_method: POST
+    request_format: message
+    ingest_style: http_records
+    requires_auth: true
+    notes: Pickle vector store via /records
+
+  rag-fastapi-chatbot:
+    tier: A
+    rag_capable: true
+    entry_module: app.main:app
+    cwd: repo
+    chat_endpoint: /api/v1/c/{chat_id}
+    ingest_endpoint: /api/v1/document/
+    http_method: POST
+    request_format: rag_fastapi_jwt
+    ingest_style: http_document_pipeline
+    requires_auth: true
+    requires_docker: true
+    notes: pgvector full stack; JWT oauth + document/chunk/embedding pipeline
+
+  context-agent-rag:
+    tier: A
+    rag_capable: true
+    entry_module: app.main:app
+    cwd: repo
+    chat_endpoint: /chat/
+    ingest_endpoint: /ingest/upload
+    http_method: POST
+    request_format: context_agent_chat
+    ingest_style: http_upload
+    kb_path: chroma_db
+    notes: webcodelabb/ContextAgent — /chat + /ingest/upload

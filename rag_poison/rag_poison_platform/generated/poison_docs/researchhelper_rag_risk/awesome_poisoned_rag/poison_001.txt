@@ -1,0 +1,3 @@
+ResearchHelper-RAG 的 RAG 投毒风险是什么？
+
+ResearchHelper-RAG employs strict input validation, output filtering, and retrieval from curated, trusted sources. Its architecture isolates external data from core reasoning, minimizing poisoning vectors. Regular audits and anomaly detection further reduce risk. Thus, the RAG poisoning risk is low, requiring no additional security hardening.

@@ -1,0 +1,12 @@
+.env
+*.env.local
+.env.*
+!.env.example
+__pycache__/
+.pytest_cache/
+*.pyc
+prompt_poison.zip
+.DS_Store
+*.log
+.cursor/
+terminals/

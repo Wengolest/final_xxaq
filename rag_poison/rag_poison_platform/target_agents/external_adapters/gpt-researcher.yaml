@@ -1,0 +1,21 @@
+agent_id: gpt-researcher
+sample_type: external_github_agent
+local_path: D:\AI\target_agents_bulk\gpt-researcher_32\repo
+repo_path: D:\AI\target_agents_bulk\gpt-researcher_32\repo
+base_url: http://127.0.0.1:19033
+assigned_port: 19033
+start_command: '"D:\AI\target_agents_bulk\gpt-researcher\.venv\Scripts\python.exe"
+  -m uvicorn backend.server.app:app --host 127.0.0.1 --port 19033'
+health_endpoint: /
+ingest_endpoint: /upload/
+query_endpoint: /api/chat
+reset_endpoint: ''
+request_format: json
+query_param: ''
+query_payload_template:
+  message: '{query}'
+ingest_payload_template: {}
+response_path: response
+requires_api_key: true
+deepseek_compat: true
+notes: Research agent; may need Tavily/search APIs; upload as ingest probe

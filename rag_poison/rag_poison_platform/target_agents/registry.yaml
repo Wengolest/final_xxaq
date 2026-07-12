@@ -1,0 +1,105 @@
+# External HTTP target agents (deployed under D:\AI\target_agents\<id>\)
+# Do not install these dependencies into rag_poison_platform venv.
+
+agents:
+  - id: fastapi_meets_langgraph
+    repo_url: https://github.com/naghost-dev/Fastapi-meets-Langgraph
+    local_path: D:\AI\target_agents\fastapi_meets_langgraph
+    framework: FastAPI + LangGraph
+    deploy_method: venv + uvicorn app.main:app --port 18080
+    status: running
+    api_base_url: http://127.0.0.1:18080
+    docs_endpoint: /docs
+    health_endpoint: ""
+    chat_endpoint: /agents/invoke
+    http_method: POST
+    request_format: invoke_query
+    query_param_name: prompt
+    requires_llm_key: true
+    requires_database: false
+    requires_docker: false
+    tested_at: "2026-05-31"
+    notes: >
+      LangGraph prompt-generation demo (not security RAG). HTTP OK after mapping
+      OPENAI_* to DeepSeek via local .env. Invoke uses query param prompt=...
+
+  - id: simple_rag_chatbot
+    repo_url: https://github.com/iamtxena/simple-rag-chatbot
+    local_path: D:\AI\target_agents\simple_rag_chatbot
+    framework: FastAPI + LangChain RAG + Chroma
+    deploy_method: venv + uvicorn src.main:app --port 8001
+    status: running
+    api_base_url: http://127.0.0.1:8001
+    docs_endpoint: /docs
+    health_endpoint: /health
+    chat_endpoint: /query
+    ingest_endpoint: /documents
+    reset_endpoint: /reset
+    http_method: POST
+    request_format: question
+    requires_llm_key: true
+    requires_database: false
+    requires_docker: false
+    tested_at: "2026-06-07"
+    notes: >
+      GitHub RAG agent; test-only local patches for langchain compat + /reset.
+      Poison E2E via github_http_rag_poison_matrix runner.
+
+  - id: rag_langchain_fastapi
+    repo_url: https://github.com/anarojoecheburua/RAG-with-Langchain-and-FastAPI
+    local_path: D:\AI\target_agents\rag_langchain_fastapi
+    framework: FastAPI + LangChain + FAISS
+    deploy_method: not attempted (repo oversized)
+    status: failed
+    api_base_url: ""
+    docs_endpoint: /docs
+    health_endpoint: ""
+    chat_endpoint: /query
+    http_method: GET
+    request_format: query
+    requires_llm_key: true
+    requires_database: false
+    requires_docker: false
+    tested_at: "2026-05-31"
+    notes: >
+      git clone pulled >11k files (likely bundled artifacts). Skipped within 15m budget.
+
+  - id: minimal_http_rag_agent
+    repo_url: local://rag_poison_platform/minimal_http_rag_agent
+    local_path: D:\AI\rag_poison_exp\rag_poison_platform\minimal_http_rag_agent
+    framework: FastAPI + TF-IDF + DeepSeek
+    deploy_method: minimal_http_rag_agent/run_server.ps1
+    status: running
+    api_base_url: http://127.0.0.1:18100
+    docs_endpoint: /docs
+    health_endpoint: /health
+    chat_endpoint: /query
+    http_method: POST
+    request_format: question
+    requires_llm_key: true
+    requires_database: false
+    requires_docker: false
+    tested_at: "2026-05-31"
+    notes: >
+      Platform-owned minimal HTTP RAG for poison E2E. Endpoints: /reset, /ingest, /query.
+      Results: results/minimal_http_rag_poison_test.csv
+
+  - id: langgraph_agents_shamspias
+    repo_url: https://github.com/shamspias/langgraph-agents
+    local_path: D:\AI\target_agents\langgraph_agents_shamspias
+    framework: FastAPI + LangGraph multi-agent
+    deploy_method: uvicorn main:app
+    status: installed
+    api_base_url: ""
+    docs_endpoint: /docs
+    health_endpoint: ""
+    chat_endpoint: /chat
+    http_method: POST
+    request_format: message
+    requires_llm_key: true
+    requires_database: true
+    requires_docker: false
+    tested_at: "2026-05-31"
+    notes: >
+      Cloned; minimal pip install only. Full requirements (chromadb, etc.) not
+      completed; service not started within time budget.

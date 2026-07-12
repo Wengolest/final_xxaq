@@ -1,0 +1,30 @@
+{
+  "run_id": "self_proof_rag_20260627_222905_bff7cd05",
+  "experiment": "minimal_http_rag_poison",
+  "agent": "minimal_http_rag_agent",
+  "base_url": "http://127.0.0.1:18100",
+  "target_id": "researchhelper_rag_risk",
+  "attack_id": "content_poison",
+  "rows": 2,
+  "csv": "D:\\AI\\rag_poison_exp\\rag_poison_platform\\results\\self_proof_rag_demo.csv",
+  "health": {
+    "ok": true,
+    "status_code": 200,
+    "data": {
+      "ok": true,
+      "service": "minimal_http_rag_agent",
+      "doc_count": 9,
+      "profiles": [
+        "clean_demotion_top5",
+        "keyword_overlap_top5",
+        "poison_boost_top10",
+        "poison_boost_top5",
+        "poison_top1_forced",
+        "tfidf_top10",
+        "tfidf_top5",
+        "trusted_source_boost_top5"
+      ]
+    },
+    "error": ""
+  }
+}

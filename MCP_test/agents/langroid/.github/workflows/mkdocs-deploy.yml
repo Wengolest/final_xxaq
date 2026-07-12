@@ -1,0 +1,40 @@
+name: Doc Pages
+
+on:
+  push:
+    paths:
+      - "docs/**"
+      - "mkdocs.yml"
+      - ".github/workflows/mkdocs-deploy.yml"
+    branches:
+      - main
+      - simpler_doc_linking
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11  # Replace with your desired Python version
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+
+      - name: Install project dependencies with uv
+        run: uv sync --group docs 
+
+      - name: Build MkDocs documentation
+        # change this to -b gh-pages when ready to make docs public
+        run: uv run mkdocs gh-deploy -b gh-pages --force
+

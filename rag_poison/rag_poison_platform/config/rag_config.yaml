@@ -1,0 +1,49 @@
+experiment:
+  # six_category_rag: A–E template attacks (45-row matrix)
+  # legacy_four: original template + awesome attacks (36-row matrix)
+  attack_set: six_category_rag
+
+dataset_loader_config:
+  dataset_name: "platform_mini"
+  dataset_path: "data/"
+  sample_size: 1
+
+rag_config:
+  embedding_config:
+    model: "sentence-transformers/all-MiniLM-L6-v2"
+    provider: "huggingface"
+  chat_config:
+    model: "deepseek-chat"
+    model_provider: "openai"
+    temperature: 0.1
+    max_tokens: 300
+  processing_params:
+    max_length: 512
+    top_k: 5
+    seed: 42
+  save_path: "generated/mock_vectorstore/"
+
+attack_config:
+  poisoned_rag_attack_config:
+    llm_attack_config:
+      model: "deepseek-chat"
+      model_provider: "openai"
+      temperature: 0.1
+      max_tokens: 300
+    num_docs_per_target_query: 1
+    num_target_queries: 1
+    num_words_per_doc: 80
+    seed: 42
+
+  corrupt_rag_attack_config:
+    llm_attack_config:
+      model: "deepseek-chat"
+      model_provider: "openai"
+      temperature: 0.1
+      max_tokens: 300
+    num_target_queries: 1
+    num_words_per_doc: 250
+    attack_method: "AS"
+    max_refinement_attempts: 3
+    ak_word_limit: 50
+    seed: 42

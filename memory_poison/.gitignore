@@ -1,0 +1,13 @@
+# 实验输出（保留 example 样例）
+plugin/results/*
+!plugin/results/example/
+!plugin/results/latest.json
+
+# Agent 运行时 SQLite 库
+plugin/agent_databases/*.db
+
+# Python / 环境
+__pycache__/
+*.pyc
+.env
+.chroma_exp_data/

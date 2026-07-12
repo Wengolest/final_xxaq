@@ -1,0 +1,16 @@
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+.DS_Store
+Untitled
+
+# 各 Agent 独立环境
+agents/*/venv/
+
+# 实验输出
+results/

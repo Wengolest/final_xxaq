@@ -1,0 +1,24 @@
+agent_id: langgraph-agents
+sample_type: external_github_agent
+local_path: D:\AI\target_agents_bulk\langgraph-agents_3\repo
+repo_path: D:\AI\target_agents_bulk\langgraph-agents_3\repo
+base_url: http://127.0.0.1:19004
+assigned_port: 19004
+start_command: '"D:\AI\target_agents_bulk\langgraph-agents\.venv\Scripts\python.exe"
+  -m uvicorn app:app --host 127.0.0.1 --port 19004'
+health_endpoint: /health
+ingest_endpoint: /embed
+query_endpoint: /chat
+reset_endpoint: ''
+request_format: json
+query_param: ''
+query_payload_template:
+  message: '{query}'
+  agent_type: multipurpose
+ingest_payload_template:
+  content: '{text}'
+  collection_name: general_knowledge
+response_path: response
+requires_api_key: true
+deepseek_compat: true
+notes: FastAPI+LangGraph; embed endpoint as ingest surrogate

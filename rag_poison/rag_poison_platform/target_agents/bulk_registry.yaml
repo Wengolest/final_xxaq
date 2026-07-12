@@ -1,0 +1,3005 @@
+agents:
+- id: fastapi-meets-langgraph
+  repo_url: https://github.com/naghost-dev/Fastapi-meets-Langgraph
+  repo_name: Fastapi-meets-Langgraph
+  framework: FastAPI+LangGraph
+  local_path: D:\AI\target_agents_bulk\fastapi-meets-langgraph\repo
+  venv_path: D:\AI\target_agents_bulk\fastapi-meets-langgraph\.venv
+  candidate_reason: LangGraph agent HTTP invoke
+  status: installed
+  clone_success: true
+  install_success: true
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: C
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: true
+  has_dockerfile: false
+  has_fastapi: true
+  has_flask: false
+  has_langchain: true
+  has_langgraph: true
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints:
+    invoke: /invoke
+  api_base_url: ''
+  assigned_port: 19001
+  docs_endpoint: /docs
+  health_endpoint: ''
+  chat_endpoint: /agents/invoke
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: ''
+  error_summary: ''
+  deploy_commands:
+    clone: git clone https://github.com/naghost-dev/Fastapi-meets-Langgraph D:\AI\target_agents_bulk\fastapi-meets-langgraph\repo
+    install: python -m venv D:\AI\target_agents_bulk\fastapi-meets-langgraph\.venv
+      && pip install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T22:06:19'
+  notes: repo_reachable
+  install_attempted: false
+  install_skipped: false
+  skip_reason: already_installed
+  error_type: ''
+  poison_test_supported: false
+- id: simple-rag-chatbot
+  repo_url: https://github.com/iamtxena/simple-rag-chatbot
+  repo_name: simple-rag-chatbot
+  framework: FastAPI+Chroma
+  local_path: D:\AI\target_agents_bulk\simple-rag-chatbot_1\repo
+  venv_path: D:\AI\target_agents_bulk\simple-rag-chatbot\.venv
+  candidate_reason: simple RAG chatbot API
+  status: install_failed
+  clone_success: false
+  install_success: false
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: D
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: true
+  has_pyproject_toml: false
+  has_dockerfile: true
+  has_fastapi: true
+  has_flask: false
+  has_langchain: true
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: true
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints:
+    docs: /docs
+    health: /health
+    query: /query
+    documents: /documents
+  api_base_url: ''
+  assigned_port: 19002
+  docs_endpoint: /docs
+  health_endpoint: /health
+  chat_endpoint: ''
+  query_endpoint: /query
+  ingest_endpoint: /documents
+  request_format: ''
+  response_format_notes: ''
+  error_stage: install
+  error_summary: "cc 8.1.0 \"c++ (x86_64-posix-sjlj-rev0, Built by MinGW-W64 project)\
+    \ 8.1.0\")\n  C++ linker for the host machine: c++ ld.bfd 2.30\n  Cython compiler\
+    \ for the host machine: cython (cython 3.0.12)\n  Host machine cpu family: x86_64\n\
+    \  Host machine cpu: x86_64\n  \n  ..\\meson.build:28:4: ERROR: Problem encountered:\
+    \ NumPy requires GCC >= 8.4\n  \n  A full log can be found at C:\\Users\\MaRuiyan\\\
+    AppData\\Local\\Temp\\pip-install-n0ohcnb7\\numpy_141460dd31dc4178958f046a10fdc725\\\
+    .mesonpy-vj4sp41v\\meson-logs\\meson-log.txt\n  [end of output]\n  \n  note: This\
+    \ error originates from a subprocess, and is likely not a problem with pip.\n\
+    error: metadata-generation-failed\n\nEncountered error while generating package\
+    \ metadata.\n\nnumpy\n\nnote: This is an issue with the package mentioned above,\
+    \ not pip.\nhint: See above for details."
+  deploy_commands:
+    clone: git clone https://github.com/iamtxena/simple-rag-chatbot D:\AI\target_agents_bulk\simple-rag-chatbot_1\repo
+    install: python -m venv D:\AI\target_agents_bulk\simple-rag-chatbot_1\.venv &&
+      pip install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T22:07:38'
+  notes: repo_reachable
+  install_attempted: true
+  install_skipped: false
+  skip_reason: ''
+  error_type: dependency_build_failed
+- id: rag-with-langchain-and-fastapi
+  repo_url: https://github.com/anarojoecheburua/RAG-with-Langchain-and-FastAPI
+  repo_name: RAG-with-Langchain-and-FastAPI
+  framework: FastAPI+LangChain+FAISS
+  local_path: D:\AI\target_agents_bulk\rag-with-langchain-and-fastapi_2\repo
+  venv_path: D:\AI\target_agents_bulk\rag-with-langchain-and-fastapi\.venv
+  candidate_reason: LangChain RAG FastAPI
+  status: installed
+  clone_success: true
+  install_success: true
+  startup_success: false
+  http_api_success: false
+  rag_capable: true
+  poison_tested: false
+  grade: C
+  requires_llm_key: true
+  requires_database: true
+  requires_docker: false
+  requires_frontend: true
+  has_requirements_txt: true
+  has_pyproject_toml: false
+  has_dockerfile: false
+  has_fastapi: true
+  has_flask: false
+  has_langchain: true
+  has_langgraph: true
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: true
+  has_qdrant: false
+  likely_endpoints:
+    docs: /docs
+    openapi: /openapi.json
+  api_base_url: ''
+  assigned_port: 19003
+  docs_endpoint: /docs
+  health_endpoint: ''
+  chat_endpoint: /query/
+  query_endpoint: ''
+  ingest_endpoint: file_kb
+  request_format: ''
+  response_format_notes: ''
+  error_stage: install
+  error_summary: ".0 (from -r D:\\AI\\target_agents_bulk\\rag-with-langchain-and-fastapi\\\
+    repo\\requirements.txt (line 12))\n  Using cached distro-1.9.0-py3-none-any.whl.metadata\
+    \ (6.8 kB)\nCollecting exceptiongroup==1.2.2 (from -r D:\\AI\\target_agents_bulk\\\
+    rag-with-langchain-and-fastapi\\repo\\requirements.txt (line 13))\n  Downloading\
+    \ exceptiongroup-1.2.2-py3-none-any.whl.metadata (6.6 kB)\nERROR: Ignored the\
+    \ following versions that require a different python version: 0.5.12 Requires-Python\
+    \ >=3.7,<3.12; 0.5.13 Requires-Python >=3.7,<3.12; 0.5.14 Requires-Python >=3.7,<3.13\n\
+    ERROR: Could not find a version that satisfies the requirement faiss-cpu==1.8.0.post1\
+    \ (from versions: 1.9.0.post1, 1.10.0, 1.11.0, 1.11.0.post1, 1.12.0, 1.13.0, 1.13.1,\
+    \ 1.13.2, 1.14.2)\nERROR: No matching distribution found for faiss-cpu==1.8.0.post1"
+  deploy_commands:
+    clone: git clone https://github.com/anarojoecheburua/RAG-with-Langchain-and-FastAPI
+      D:\AI\target_agents_bulk\rag-with-langchain-and-fastapi_2\repo
+    install: python -m venv D:\AI\target_agents_bulk\rag-with-langchain-and-fastapi_2\.venv
+      && pip install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-07T02:05:58'
+  notes: repo_reachable
+  install_attempted: true
+  install_skipped: false
+  skip_reason: ''
+  error_type: ''
+  sample_type: external_github_agent
+  external_service_missing: false
+  poison_test_supported: true
+- id: langgraph-agents
+  repo_url: https://github.com/shamspias/langgraph-agents
+  repo_name: langgraph-agents
+  framework: LangGraph
+  local_path: D:\AI\target_agents_bulk\langgraph-agents_3\repo
+  venv_path: D:\AI\target_agents_bulk\langgraph-agents\.venv
+  candidate_reason: LangGraph multi-agent
+  status: installed
+  clone_success: true
+  install_success: true
+  startup_success: true
+  http_api_success: true
+  rag_capable: true
+  poison_tested: false
+  grade: A
+  requires_llm_key: true
+  requires_database: true
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: true
+  has_pyproject_toml: false
+  has_dockerfile: false
+  has_fastapi: true
+  has_flask: false
+  has_langchain: true
+  has_langgraph: true
+  has_llamaindex: false
+  has_chroma: true
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints:
+    health: /health
+    chat: /chat
+  api_base_url: http://127.0.0.1:19004
+  assigned_port: 19004
+  docs_endpoint: /docs
+  health_endpoint: /health
+  chat_endpoint: /query
+  query_endpoint: ''
+  ingest_endpoint: /ingest
+  request_format: ''
+  response_format_notes: ''
+  error_stage: ''
+  error_summary: ''
+  deploy_commands:
+    clone: git clone https://github.com/shamspias/langgraph-agents D:\AI\target_agents_bulk\langgraph-agents_3\repo
+    install: python -m venv D:\AI\target_agents_bulk\langgraph-agents_3\.venv && pip
+      install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T22:08:03'
+  notes: repo_reachable
+  install_attempted: false
+  install_skipped: false
+  skip_reason: already_installed
+  error_type: ''
+  poison_test_supported: true
+- id: langchain-rag-tutorial
+  repo_url: https://github.com/pixegami/langchain-rag-tutorial
+  repo_name: langchain-rag-tutorial
+  framework: LangChain
+  local_path: D:\AI\target_agents_bulk\langchain-rag-tutorial_4\repo
+  venv_path: D:\AI\target_agents_bulk\langchain-rag-tutorial\.venv
+  candidate_reason: LangChain RAG tutorial
+  status: install_failed
+  clone_success: true
+  install_success: false
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: D
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: true
+  has_pyproject_toml: false
+  has_dockerfile: false
+  has_fastapi: false
+  has_flask: false
+  has_langchain: true
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: true
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints: {}
+  api_base_url: ''
+  assigned_port: 19005
+  docs_endpoint: /docs
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: install
+  error_summary: '0.1, 0.10.2, 0.10.4, 0.10.5, 0.10.6, 0.10.7, 0.10.8, 0.10.9, 0.10.10,
+    0.10.11, 0.10.12, 0.10.13, 0.10.14, 0.10.15, 0.10.16, 0.10.18, 0.10.19, 0.10.20,
+    0.10.21, 0.10.22, 0.10.23, 0.10.24, 0.10.25, 0.10.26, 0.10.27, 0.10.28, 0.10.29,
+    0.10.30, 0.11.0, 0.11.1, 0.11.2, 0.11.4, 0.11.5, 0.11.6, 0.11.7, 0.11.8, 0.16.19,
+    0.16.20, 0.16.21, 0.16.22, 0.16.23, 0.16.24, 0.16.25, 0.17.0, 0.17.2, 0.18.1,
+    0.18.2, 0.18.3, 0.18.5, 0.18.6, 0.18.7, 0.18.9, 0.18.11, 0.18.13, 0.18.14, 0.18.15,
+    0.18.18, 0.18.20, 0.18.21, 0.18.24, 0.18.26, 0.18.27, 0.18.31, 0.18.32, 0.20.2,
+    0.20.6, 0.20.8, 0.21.0, 0.21.1, 0.21.2, 0.21.5, 0.22.6, 0.22.10, 0.22.12, 0.22.16,
+    0.22.18, 0.22.20, 0.22.21, 0.22.22, 0.22.23, 0.22.26, 0.22.27, 0.22.28, 0.22.29,
+    0.22.30, 0.22.31)
+
+    ERROR: No matching distribution found for unstructured==0.14.4'
+  deploy_commands:
+    clone: git clone https://github.com/pixegami/langchain-rag-tutorial D:\AI\target_agents_bulk\langchain-rag-tutorial_4\repo
+    install: python -m venv D:\AI\target_agents_bulk\langchain-rag-tutorial_4\.venv
+      && pip install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T22:08:27'
+  notes: repo_reachable
+  install_attempted: true
+  install_skipped: false
+  skip_reason: ''
+  error_type: pip_failed
+- id: rag-agent-fastapi
+  repo_url: https://github.com/mallahyari/rag-agent-fastapi
+  repo_name: rag-agent-fastapi
+  framework: FastAPI+RAG
+  local_path: D:\AI\target_agents_bulk\rag-agent-fastapi_5\repo
+  venv_path: D:\AI\target_agents_bulk\rag-agent-fastapi_5\.venv
+  candidate_reason: RAG agent FastAPI
+  status: clone_failed
+  clone_success: false
+  install_success: false
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: D
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: false
+  has_dockerfile: false
+  has_fastapi: false
+  has_flask: false
+  has_langchain: false
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints: &id001
+    docs: ''
+    health: ''
+    openapi: ''
+    chat: ''
+    query: ''
+    invoke: ''
+    ingest: ''
+    upload: ''
+    documents: ''
+  api_base_url: ''
+  assigned_port: 19006
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: clone
+  error_summary: 'Cloning into ''D:\AI\target_agents_bulk\rag-agent-fastapi\repo''...
+
+    remote: Repository not found.
+
+    fatal: repository ''https://github.com/mallahyari/rag-agent-fastapi/'' not found
+
+    '
+  deploy_commands:
+    clone: git clone https://github.com/mallahyari/rag-agent-fastapi D:\AI\target_agents_bulk\rag-agent-fastapi_5\repo
+    install: python -m venv D:\AI\target_agents_bulk\rag-agent-fastapi_5\.venv &&
+      pip install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T21:15:42'
+  notes: repo_unreachable_at_discover
+- id: langchain-rag-fastapi
+  repo_url: https://github.com/alphasecio/langchain-rag-fastapi
+  repo_name: langchain-rag-fastapi
+  framework: FastAPI+LangChain
+  local_path: D:\AI\target_agents_bulk\langchain-rag-fastapi_6\repo
+  venv_path: D:\AI\target_agents_bulk\langchain-rag-fastapi_6\.venv
+  candidate_reason: LangChain RAG API
+  status: clone_failed
+  clone_success: false
+  install_success: false
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: D
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: false
+  has_dockerfile: false
+  has_fastapi: false
+  has_flask: false
+  has_langchain: false
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints: *id001
+  api_base_url: ''
+  assigned_port: 19007
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: clone
+  error_summary: 'Cloning into ''D:\AI\target_agents_bulk\langchain-rag-fastapi\repo''...
+
+    remote: Repository not found.
+
+    fatal: repository ''https://github.com/alphasecio/langchain-rag-fastapi/'' not
+    found
+
+    '
+  deploy_commands:
+    clone: git clone https://github.com/alphasecio/langchain-rag-fastapi D:\AI\target_agents_bulk\langchain-rag-fastapi_6\repo
+    install: python -m venv D:\AI\target_agents_bulk\langchain-rag-fastapi_6\.venv
+      && pip install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T21:15:44'
+  notes: repo_unreachable_at_discover
+- id: langchain-fastapi-rag
+  repo_url: https://github.com/ranfysz/langchain-fastapi-rag
+  repo_name: langchain-fastapi-rag
+  framework: FastAPI+LangChain
+  local_path: D:\AI\target_agents_bulk\langchain-fastapi-rag_7\repo
+  venv_path: D:\AI\target_agents_bulk\langchain-fastapi-rag_7\.venv
+  candidate_reason: document QA API
+  status: clone_failed
+  clone_success: false
+  install_success: false
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: D
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: false
+  has_dockerfile: false
+  has_fastapi: false
+  has_flask: false
+  has_langchain: false
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints: *id001
+  api_base_url: ''
+  assigned_port: 19008
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: clone
+  error_summary: 'Cloning into ''D:\AI\target_agents_bulk\langchain-fastapi-rag\repo''...
+
+    remote: Repository not found.
+
+    fatal: repository ''https://github.com/ranfysz/langchain-fastapi-rag/'' not found
+
+    '
+  deploy_commands:
+    clone: git clone https://github.com/ranfysz/langchain-fastapi-rag D:\AI\target_agents_bulk\langchain-fastapi-rag_7\repo
+    install: python -m venv D:\AI\target_agents_bulk\langchain-fastapi-rag_7\.venv
+      && pip install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T21:15:45'
+  notes: repo_unreachable_at_discover
+- id: langchain-rag-fastapi_1
+  repo_url: https://github.com/sandeep-23/langchain-rag-fastapi
+  repo_name: langchain-rag-fastapi
+  framework: FastAPI+LangChain
+  local_path: D:\AI\target_agents_bulk\langchain-rag-fastapi_8\repo
+  venv_path: D:\AI\target_agents_bulk\langchain-rag-fastapi_8\.venv
+  candidate_reason: RAG FastAPI example
+  status: clone_failed
+  clone_success: false
+  install_success: false
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: D
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: false
+  has_dockerfile: false
+  has_fastapi: false
+  has_flask: false
+  has_langchain: false
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints: *id001
+  api_base_url: ''
+  assigned_port: 19009
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: clone
+  error_summary: 'Cloning into ''D:\AI\target_agents_bulk\langchain-rag-fastapi_1\repo''...
+
+    remote: Repository not found.
+
+    fatal: repository ''https://github.com/sandeep-23/langchain-rag-fastapi/'' not
+    found
+
+    '
+  deploy_commands:
+    clone: git clone https://github.com/sandeep-23/langchain-rag-fastapi D:\AI\target_agents_bulk\langchain-rag-fastapi_8\repo
+    install: python -m venv D:\AI\target_agents_bulk\langchain-rag-fastapi_8\.venv
+      && pip install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T21:15:46'
+  notes: repo_unreachable_at_discover
+- id: langchain-rag-fastapi_2
+  repo_url: https://github.com/UETA-Takahiro/langchain-rag-fastapi
+  repo_name: langchain-rag-fastapi
+  framework: FastAPI+LangChain
+  local_path: D:\AI\target_agents_bulk\langchain-rag-fastapi_9\repo
+  venv_path: D:\AI\target_agents_bulk\langchain-rag-fastapi_9\.venv
+  candidate_reason: JP RAG FastAPI
+  status: clone_failed
+  clone_success: false
+  install_success: false
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: D
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: false
+  has_dockerfile: false
+  has_fastapi: false
+  has_flask: false
+  has_langchain: false
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints: *id001
+  api_base_url: ''
+  assigned_port: 19010
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: clone
+  error_summary: 'Cloning into ''D:\AI\target_agents_bulk\langchain-rag-fastapi_2\repo''...
+
+    remote: Repository not found.
+
+    fatal: repository ''https://github.com/UETA-Takahiro/langchain-rag-fastapi/''
+    not found
+
+    '
+  deploy_commands:
+    clone: git clone https://github.com/UETA-Takahiro/langchain-rag-fastapi D:\AI\target_agents_bulk\langchain-rag-fastapi_9\repo
+    install: python -m venv D:\AI\target_agents_bulk\langchain-rag-fastapi_9\.venv
+      && pip install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T21:15:48'
+  notes: repo_unreachable_at_discover
+- id: fastapi-langchain-rag
+  repo_url: https://github.com/ObSchwartz/fastapi-langchain-rag
+  repo_name: fastapi-langchain-rag
+  framework: FastAPI+LangChain
+  local_path: D:\AI\target_agents_bulk\fastapi-langchain-rag_10\repo
+  venv_path: D:\AI\target_agents_bulk\fastapi-langchain-rag_10\.venv
+  candidate_reason: LangChain RAG server
+  status: clone_failed
+  clone_success: false
+  install_success: false
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: D
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: false
+  has_dockerfile: false
+  has_fastapi: false
+  has_flask: false
+  has_langchain: false
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints: *id001
+  api_base_url: ''
+  assigned_port: 19011
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: clone
+  error_summary: 'Cloning into ''D:\AI\target_agents_bulk\fastapi-langchain-rag\repo''...
+
+    remote: Repository not found.
+
+    fatal: repository ''https://github.com/ObSchwartz/fastapi-langchain-rag/'' not
+    found
+
+    '
+  deploy_commands:
+    clone: git clone https://github.com/ObSchwartz/fastapi-langchain-rag D:\AI\target_agents_bulk\fastapi-langchain-rag_10\repo
+    install: python -m venv D:\AI\target_agents_bulk\fastapi-langchain-rag_10\.venv
+      && pip install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T21:15:49'
+  notes: repo_unreachable_at_discover
+- id: langchain-rag-api
+  repo_url: https://github.com/paveldedik/langchain-rag-api
+  repo_name: langchain-rag-api
+  framework: FastAPI+LangChain
+  local_path: D:\AI\target_agents_bulk\langchain-rag-api_11\repo
+  venv_path: D:\AI\target_agents_bulk\langchain-rag-api_11\.venv
+  candidate_reason: RAG REST API
+  status: clone_failed
+  clone_success: false
+  install_success: false
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: D
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: false
+  has_dockerfile: false
+  has_fastapi: false
+  has_flask: false
+  has_langchain: false
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints: *id001
+  api_base_url: ''
+  assigned_port: 19012
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: clone
+  error_summary: 'Cloning into ''D:\AI\target_agents_bulk\langchain-rag-api\repo''...
+
+    remote: Repository not found.
+
+    fatal: repository ''https://github.com/paveldedik/langchain-rag-api/'' not found
+
+    '
+  deploy_commands:
+    clone: git clone https://github.com/paveldedik/langchain-rag-api D:\AI\target_agents_bulk\langchain-rag-api_11\repo
+    install: python -m venv D:\AI\target_agents_bulk\langchain-rag-api_11\.venv &&
+      pip install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T21:15:51'
+  notes: repo_unreachable_at_discover
+- id: faq-chatbot-rag
+  repo_url: https://github.com/eyucoder/faq-chatbot-rag
+  repo_name: faq-chatbot-rag
+  framework: FastAPI+RAG
+  local_path: D:\AI\target_agents_bulk\faq-chatbot-rag_12\repo
+  venv_path: D:\AI\target_agents_bulk\faq-chatbot-rag_12\.venv
+  candidate_reason: FAQ RAG chatbot
+  status: clone_failed
+  clone_success: false
+  install_success: false
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: D
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: false
+  has_dockerfile: false
+  has_fastapi: false
+  has_flask: false
+  has_langchain: false
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints: *id001
+  api_base_url: ''
+  assigned_port: 19013
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: clone
+  error_summary: 'Cloning into ''D:\AI\target_agents_bulk\faq-chatbot-rag\repo''...
+
+    remote: Repository not found.
+
+    fatal: repository ''https://github.com/eyucoder/faq-chatbot-rag/'' not found
+
+    '
+  deploy_commands:
+    clone: git clone https://github.com/eyucoder/faq-chatbot-rag D:\AI\target_agents_bulk\faq-chatbot-rag_12\repo
+    install: python -m venv D:\AI\target_agents_bulk\faq-chatbot-rag_12\.venv && pip
+      install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T21:15:52'
+  notes: repo_unreachable_at_discover
+- id: pdf-chatbot-fastapi
+  repo_url: https://github.com/Jaimboh/PDF-ChatBot-FastAPI
+  repo_name: PDF-ChatBot-FastAPI
+  framework: FastAPI+PDF RAG
+  local_path: D:\AI\target_agents_bulk\pdf-chatbot-fastapi_13\repo
+  venv_path: D:\AI\target_agents_bulk\pdf-chatbot-fastapi_13\.venv
+  candidate_reason: PDF chatbot API
+  status: clone_failed
+  clone_success: false
+  install_success: false
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: D
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: false
+  has_dockerfile: false
+  has_fastapi: false
+  has_flask: false
+  has_langchain: false
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints: *id001
+  api_base_url: ''
+  assigned_port: 19014
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: clone
+  error_summary: 'Cloning into ''D:\AI\target_agents_bulk\pdf-chatbot-fastapi\repo''...
+
+    remote: Repository not found.
+
+    fatal: repository ''https://github.com/Jaimboh/PDF-ChatBot-FastAPI/'' not found
+
+    '
+  deploy_commands:
+    clone: git clone https://github.com/Jaimboh/PDF-ChatBot-FastAPI D:\AI\target_agents_bulk\pdf-chatbot-fastapi_13\repo
+    install: python -m venv D:\AI\target_agents_bulk\pdf-chatbot-fastapi_13\.venv
+      && pip install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T21:15:53'
+  notes: repo_unreachable_at_discover
+- id: rag-fastapi-langchain
+  repo_url: https://github.com/antoniolanza1996/rag-fastapi-langchain
+  repo_name: rag-fastapi-langchain
+  framework: FastAPI+LangChain
+  local_path: D:\AI\target_agents_bulk\rag-fastapi-langchain_14\repo
+  venv_path: D:\AI\target_agents_bulk\rag-fastapi-langchain_14\.venv
+  candidate_reason: RAG LangChain API
+  status: clone_failed
+  clone_success: false
+  install_success: false
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: D
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: false
+  has_dockerfile: false
+  has_fastapi: false
+  has_flask: false
+  has_langchain: false
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints: *id001
+  api_base_url: ''
+  assigned_port: 19015
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: clone
+  error_summary: 'Cloning into ''D:\AI\target_agents_bulk\rag-fastapi-langchain\repo''...
+
+    remote: Repository not found.
+
+    fatal: repository ''https://github.com/antoniolanza1996/rag-fastapi-langchain/''
+    not found
+
+    '
+  deploy_commands:
+    clone: git clone https://github.com/antoniolanza1996/rag-fastapi-langchain D:\AI\target_agents_bulk\rag-fastapi-langchain_14\repo
+    install: python -m venv D:\AI\target_agents_bulk\rag-fastapi-langchain_14\.venv
+      && pip install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T21:15:55'
+  notes: repo_unreachable_at_discover
+- id: rag_chatbot
+  repo_url: https://github.com/JeongJuhan/RAG_chatbot
+  repo_name: RAG_chatbot
+  framework: FastAPI+RAG
+  local_path: D:\AI\target_agents_bulk\rag_chatbot_15\repo
+  venv_path: D:\AI\target_agents_bulk\rag_chatbot_15\.venv
+  candidate_reason: RAG chatbot
+  status: clone_failed
+  clone_success: false
+  install_success: false
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: D
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: false
+  has_dockerfile: false
+  has_fastapi: false
+  has_flask: false
+  has_langchain: false
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints: *id001
+  api_base_url: ''
+  assigned_port: 19016
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: clone
+  error_summary: 'Cloning into ''D:\AI\target_agents_bulk\rag_chatbot\repo''...
+
+    remote: Repository not found.
+
+    fatal: repository ''https://github.com/JeongJuhan/RAG_chatbot/'' not found
+
+    '
+  deploy_commands:
+    clone: git clone https://github.com/JeongJuhan/RAG_chatbot D:\AI\target_agents_bulk\rag_chatbot_15\repo
+    install: python -m venv D:\AI\target_agents_bulk\rag_chatbot_15\.venv && pip install
+      -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T21:15:56'
+  notes: repo_unreachable_at_discover
+- id: fastapi-ollama-rag
+  repo_url: https://github.com/araweeli/fastapi-ollama-rag
+  repo_name: fastapi-ollama-rag
+  framework: FastAPI+Ollama
+  local_path: D:\AI\target_agents_bulk\fastapi-ollama-rag_16\repo
+  venv_path: D:\AI\target_agents_bulk\fastapi-ollama-rag_16\.venv
+  candidate_reason: Ollama RAG API
+  status: clone_failed
+  clone_success: false
+  install_success: false
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: D
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: false
+  has_dockerfile: false
+  has_fastapi: false
+  has_flask: false
+  has_langchain: false
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints: *id001
+  api_base_url: ''
+  assigned_port: 19017
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: clone
+  error_summary: 'Cloning into ''D:\AI\target_agents_bulk\fastapi-ollama-rag\repo''...
+
+    remote: Repository not found.
+
+    fatal: repository ''https://github.com/araweeli/fastapi-ollama-rag/'' not found
+
+    '
+  deploy_commands:
+    clone: git clone https://github.com/araweeli/fastapi-ollama-rag D:\AI\target_agents_bulk\fastapi-ollama-rag_16\repo
+    install: python -m venv D:\AI\target_agents_bulk\fastapi-ollama-rag_16\.venv &&
+      pip install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T21:15:58'
+  notes: repo_unreachable_at_discover
+- id: llama-rag-fastapi
+  repo_url: https://github.com/santorodeng/llama-rag-fastapi
+  repo_name: llama-rag-fastapi
+  framework: FastAPI+Llama
+  local_path: D:\AI\target_agents_bulk\llama-rag-fastapi_17\repo
+  venv_path: D:\AI\target_agents_bulk\llama-rag-fastapi_17\.venv
+  candidate_reason: Llama RAG API
+  status: clone_failed
+  clone_success: false
+  install_success: false
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: D
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: false
+  has_dockerfile: false
+  has_fastapi: false
+  has_flask: false
+  has_langchain: false
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints: *id001
+  api_base_url: ''
+  assigned_port: 19018
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: clone
+  error_summary: 'Cloning into ''D:\AI\target_agents_bulk\llama-rag-fastapi\repo''...
+
+    remote: Repository not found.
+
+    fatal: repository ''https://github.com/santorodeng/llama-rag-fastapi/'' not found
+
+    '
+  deploy_commands:
+    clone: git clone https://github.com/santorodeng/llama-rag-fastapi D:\AI\target_agents_bulk\llama-rag-fastapi_17\repo
+    install: python -m venv D:\AI\target_agents_bulk\llama-rag-fastapi_17\.venv &&
+      pip install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T21:15:59'
+  notes: repo_unreachable_at_discover
+- id: fastapi-rag-template
+  repo_url: https://github.com/tjmlabs/fastapi-rag-template
+  repo_name: fastapi-rag-template
+  framework: FastAPI+RAG
+  local_path: D:\AI\target_agents_bulk\fastapi-rag-template_18\repo
+  venv_path: D:\AI\target_agents_bulk\fastapi-rag-template_18\.venv
+  candidate_reason: RAG template
+  status: clone_failed
+  clone_success: false
+  install_success: false
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: D
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: false
+  has_dockerfile: false
+  has_fastapi: false
+  has_flask: false
+  has_langchain: false
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints: *id001
+  api_base_url: ''
+  assigned_port: 19019
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: clone
+  error_summary: 'Cloning into ''D:\AI\target_agents_bulk\fastapi-rag-template\repo''...
+
+    remote: Repository not found.
+
+    fatal: repository ''https://github.com/tjmlabs/fastapi-rag-template/'' not found
+
+    '
+  deploy_commands:
+    clone: git clone https://github.com/tjmlabs/fastapi-rag-template D:\AI\target_agents_bulk\fastapi-rag-template_18\repo
+    install: python -m venv D:\AI\target_agents_bulk\fastapi-rag-template_18\.venv
+      && pip install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T21:16:00'
+  notes: repo_unreachable_at_discover
+- id: fastapi-rag-example
+  repo_url: https://github.com/koenvandenberge/fastapi-rag-example
+  repo_name: fastapi-rag-example
+  framework: FastAPI+RAG
+  local_path: D:\AI\target_agents_bulk\fastapi-rag-example_19\repo
+  venv_path: D:\AI\target_agents_bulk\fastapi-rag-example_19\.venv
+  candidate_reason: minimal RAG example
+  status: clone_failed
+  clone_success: false
+  install_success: false
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: D
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: false
+  has_dockerfile: false
+  has_fastapi: false
+  has_flask: false
+  has_langchain: false
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints: *id001
+  api_base_url: ''
+  assigned_port: 19020
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: clone
+  error_summary: 'Cloning into ''D:\AI\target_agents_bulk\fastapi-rag-example\repo''...
+
+    remote: Repository not found.
+
+    fatal: repository ''https://github.com/koenvandenberge/fastapi-rag-example/''
+    not found
+
+    '
+  deploy_commands:
+    clone: git clone https://github.com/koenvandenberge/fastapi-rag-example D:\AI\target_agents_bulk\fastapi-rag-example_19\repo
+    install: python -m venv D:\AI\target_agents_bulk\fastapi-rag-example_19\.venv
+      && pip install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T21:16:02'
+  notes: repo_unreachable_at_discover
+- id: simple-rag-chatbot-fastapi
+  repo_url: https://github.com/Shauryasharma45/simple-rag-chatbot-fastapi
+  repo_name: simple-rag-chatbot-fastapi
+  framework: FastAPI+RAG
+  local_path: D:\AI\target_agents_bulk\simple-rag-chatbot-fastapi_20\repo
+  venv_path: D:\AI\target_agents_bulk\simple-rag-chatbot-fastapi_20\.venv
+  candidate_reason: simple RAG API
+  status: clone_failed
+  clone_success: false
+  install_success: false
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: D
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: false
+  has_dockerfile: false
+  has_fastapi: false
+  has_flask: false
+  has_langchain: false
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints: *id001
+  api_base_url: ''
+  assigned_port: 19021
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: clone
+  error_summary: 'Cloning into ''D:\AI\target_agents_bulk\simple-rag-chatbot-fastapi\repo''...
+
+    remote: Repository not found.
+
+    fatal: repository ''https://github.com/Shauryasharma45/simple-rag-chatbot-fastapi/''
+    not found
+
+    '
+  deploy_commands:
+    clone: git clone https://github.com/Shauryasharma45/simple-rag-chatbot-fastapi
+      D:\AI\target_agents_bulk\simple-rag-chatbot-fastapi_20\repo
+    install: python -m venv D:\AI\target_agents_bulk\simple-rag-chatbot-fastapi_20\.venv
+      && pip install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T21:16:04'
+  notes: repo_unreachable_at_discover
+- id: fastapi-llm-app
+  repo_url: https://github.com/jermwang/fastapi-llm-app
+  repo_name: fastapi-llm-app
+  framework: FastAPI+LLM
+  local_path: D:\AI\target_agents_bulk\fastapi-llm-app_21\repo
+  venv_path: D:\AI\target_agents_bulk\fastapi-llm-app_21\.venv
+  candidate_reason: LLM FastAPI app
+  status: clone_failed
+  clone_success: false
+  install_success: false
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: D
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: false
+  has_dockerfile: false
+  has_fastapi: false
+  has_flask: false
+  has_langchain: false
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints: *id001
+  api_base_url: ''
+  assigned_port: 19022
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: clone
+  error_summary: 'Cloning into ''D:\AI\target_agents_bulk\fastapi-llm-app\repo''...
+
+    remote: Repository not found.
+
+    fatal: repository ''https://github.com/jermwang/fastapi-llm-app/'' not found
+
+    '
+  deploy_commands:
+    clone: git clone https://github.com/jermwang/fastapi-llm-app D:\AI\target_agents_bulk\fastapi-llm-app_21\repo
+    install: python -m venv D:\AI\target_agents_bulk\fastapi-llm-app_21\.venv && pip
+      install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T21:16:05'
+  notes: repo_unreachable_at_discover
+- id: langserve
+  repo_url: https://github.com/langchain-ai/langserve
+  repo_name: langserve
+  framework: LangServe
+  local_path: D:\AI\target_agents_bulk\langserve_22\repo
+  venv_path: D:\AI\target_agents_bulk\langserve\.venv
+  candidate_reason: LangServe RAG server
+  status: installed
+  clone_success: true
+  install_success: true
+  startup_success: true
+  http_api_success: true
+  rag_capable: true
+  poison_tested: false
+  grade: A
+  requires_llm_key: true
+  requires_database: true
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: true
+  has_dockerfile: false
+  has_fastapi: true
+  has_flask: false
+  has_langchain: true
+  has_langgraph: true
+  has_llamaindex: false
+  has_chroma: true
+  has_faiss: true
+  has_qdrant: false
+  likely_endpoints:
+    openapi: /openapi.json
+    chat: /chat
+    invoke: /invoke
+  api_base_url: http://127.0.0.1:19023
+  assigned_port: 19023
+  docs_endpoint: /docs
+  health_endpoint: ''
+  chat_endpoint: /invoke
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: ''
+  error_summary: ''
+  deploy_commands:
+    clone: git clone https://github.com/langchain-ai/langserve D:\AI\target_agents_bulk\langserve_22\repo
+    install: python -m venv D:\AI\target_agents_bulk\langserve_22\.venv && pip install
+      -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T22:08:27'
+  notes: repo_reachable
+  install_attempted: false
+  install_skipped: false
+  skip_reason: already_installed
+  error_type: ''
+  poison_test_supported: true
+- id: llama_index
+  repo_url: https://github.com/run-llama/llama_index
+  repo_name: llama_index
+  framework: LlamaIndex
+  local_path: D:\AI\target_agents_bulk\llama_index_23\repo
+  venv_path: D:\AI\target_agents_bulk\llama_index_23\.venv
+  candidate_reason: LlamaIndex core (inspect only)
+  status: external_service_missing
+  clone_success: true
+  install_success: true
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: C
+  requires_llm_key: true
+  requires_database: true
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: true
+  has_pyproject_toml: true
+  has_dockerfile: false
+  has_fastapi: true
+  has_flask: false
+  has_langchain: true
+  has_langgraph: false
+  has_llamaindex: true
+  has_chroma: true
+  has_faiss: true
+  has_qdrant: true
+  likely_endpoints: {}
+  api_base_url: ''
+  assigned_port: 19024
+  docs_endpoint: /docs
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: clone
+  error_summary: '028)
+
+    Updating files:  88% (8825/10028)
+
+    Updating files:  89% (8925/10028)
+
+    Updating files:  90% (9026/10028)
+
+    Updating files:  91% (9126/10028)
+
+    Updating files:  92% (9226/10028)
+
+    Updating files:  93% (9327/10028)
+
+    Updating files:  94% (9427/10028)
+
+    Updating files:  95% (9527/10028)
+
+    Updating files:  96% (9627/10028)
+
+    Updating files:  97% (9728/10028)
+
+    Updating files:  98% (9828/10028)
+
+    Updating files:  99% (9928/10028)
+
+    Updating files: 100% (10028/10028)
+
+    Updating files: 100% (10028/10028), done.
+
+
+    [TIMEOUT]'
+  deploy_commands:
+    clone: git clone https://github.com/run-llama/llama_index D:\AI\target_agents_bulk\llama_index_23\repo
+    install: python -m venv D:\AI\target_agents_bulk\llama_index_23\.venv && pip install
+      -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-07T02:12:32'
+  notes: repo_reachable
+  install_attempted: true
+  error_type: ''
+  external_service_missing: true
+  sample_type: api_dependent_agent
+  poison_test_supported: false
+  api_dependency_notes: GOOGLE_API_KEY
+- id: chroma
+  repo_url: https://github.com/chroma-core/chroma
+  repo_name: chroma
+  framework: Chroma
+  local_path: D:\AI\target_agents_bulk\chroma_24\repo
+  venv_path: D:\AI\target_agents_bulk\chroma\.venv
+  candidate_reason: vector DB with API
+  status: install_skipped
+  clone_success: true
+  install_success: false
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: D
+  requires_llm_key: true
+  requires_database: true
+  requires_docker: true
+  requires_frontend: false
+  has_requirements_txt: true
+  has_pyproject_toml: true
+  has_dockerfile: true
+  has_fastapi: true
+  has_flask: false
+  has_langchain: true
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: true
+  has_faiss: false
+  has_qdrant: true
+  likely_endpoints: {}
+  api_base_url: ''
+  assigned_port: 19025
+  docs_endpoint: /docs
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: ''
+  error_summary: ''
+  deploy_commands:
+    clone: git clone https://github.com/chroma-core/chroma D:\AI\target_agents_bulk\chroma_24\repo
+    install: python -m venv D:\AI\target_agents_bulk\chroma_24\.venv && pip install
+      -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T22:08:27'
+  notes: repo_reachable
+  install_attempted: false
+  install_skipped: true
+  skip_reason: too_heavy_or_framework_repo
+  error_type: ''
+- id: crag-rag-agent
+  repo_url: https://github.com/ttran9/crag-rag-agent
+  repo_name: crag-rag-agent
+  framework: LangChain RAG
+  local_path: D:\AI\target_agents_bulk\crag-rag-agent_25\repo
+  venv_path: D:\AI\target_agents_bulk\crag-rag-agent_25\.venv
+  candidate_reason: CRAG agent
+  status: clone_failed
+  clone_success: false
+  install_success: false
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: D
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: false
+  has_dockerfile: false
+  has_fastapi: false
+  has_flask: false
+  has_langchain: false
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints: *id001
+  api_base_url: ''
+  assigned_port: 19026
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: clone
+  error_summary: 'Cloning into ''D:\AI\target_agents_bulk\crag-rag-agent\repo''...
+
+    remote: Repository not found.
+
+    fatal: repository ''https://github.com/ttran9/crag-rag-agent/'' not found
+
+    '
+  deploy_commands:
+    clone: git clone https://github.com/ttran9/crag-rag-agent D:\AI\target_agents_bulk\crag-rag-agent_25\repo
+    install: python -m venv D:\AI\target_agents_bulk\crag-rag-agent_25\.venv && pip
+      install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T21:23:55'
+  notes: repo_unreachable_at_discover
+- id: franken-rag
+  repo_url: https://github.com/zahiry/franken-rag
+  repo_name: franken-rag
+  framework: RAG
+  local_path: D:\AI\target_agents_bulk\franken-rag_26\repo
+  venv_path: D:\AI\target_agents_bulk\franken-rag_26\.venv
+  candidate_reason: Franken RAG
+  status: clone_failed
+  clone_success: false
+  install_success: false
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: D
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: false
+  has_dockerfile: false
+  has_fastapi: false
+  has_flask: false
+  has_langchain: false
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints: *id001
+  api_base_url: ''
+  assigned_port: 19027
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: clone
+  error_summary: 'Cloning into ''D:\AI\target_agents_bulk\franken-rag\repo''...
+
+    remote: Repository not found.
+
+    fatal: repository ''https://github.com/zahiry/franken-rag/'' not found
+
+    '
+  deploy_commands:
+    clone: git clone https://github.com/zahiry/franken-rag D:\AI\target_agents_bulk\franken-rag_26\repo
+    install: python -m venv D:\AI\target_agents_bulk\franken-rag_26\.venv && pip install
+      -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T21:23:57'
+  notes: repo_unreachable_at_discover
+- id: rag-qna-langchain
+  repo_url: https://github.com/SKNETWORKS-FAMILY-AICAMP/RAG-QnA-Langchain
+  repo_name: RAG-QnA-Langchain
+  framework: LangChain RAG
+  local_path: D:\AI\target_agents_bulk\rag-qna-langchain_27\repo
+  venv_path: D:\AI\target_agents_bulk\rag-qna-langchain_27\.venv
+  candidate_reason: RAG QnA
+  status: clone_failed
+  clone_success: false
+  install_success: false
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: D
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: false
+  has_dockerfile: false
+  has_fastapi: false
+  has_flask: false
+  has_langchain: false
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints: *id001
+  api_base_url: ''
+  assigned_port: 19028
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: clone
+  error_summary: 'Cloning into ''D:\AI\target_agents_bulk\rag-qna-langchain\repo''...
+
+    remote: Repository not found.
+
+    fatal: repository ''https://github.com/SKNETWORKS-FAMILY-AICAMP/RAG-QnA-Langchain/''
+    not found
+
+    '
+  deploy_commands:
+    clone: git clone https://github.com/SKNETWORKS-FAMILY-AICAMP/RAG-QnA-Langchain
+      D:\AI\target_agents_bulk\rag-qna-langchain_27\repo
+    install: python -m venv D:\AI\target_agents_bulk\rag-qna-langchain_27\.venv &&
+      pip install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T21:23:58'
+  notes: repo_unreachable_at_discover
+- id: fastapi-rag
+  repo_url: https://github.com/EthanCaddle/fastapi-rag
+  repo_name: fastapi-rag
+  framework: FastAPI+RAG
+  local_path: D:\AI\target_agents_bulk\fastapi-rag_28\repo
+  venv_path: D:\AI\target_agents_bulk\fastapi-rag_28\.venv
+  candidate_reason: FastAPI RAG
+  status: clone_failed
+  clone_success: false
+  install_success: false
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: D
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: false
+  has_dockerfile: false
+  has_fastapi: false
+  has_flask: false
+  has_langchain: false
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints: *id001
+  api_base_url: ''
+  assigned_port: 19029
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: clone
+  error_summary: 'Cloning into ''D:\AI\target_agents_bulk\fastapi-rag\repo''...
+
+    remote: Repository not found.
+
+    fatal: repository ''https://github.com/EthanCaddle/fastapi-rag/'' not found
+
+    '
+  deploy_commands:
+    clone: git clone https://github.com/EthanCaddle/fastapi-rag D:\AI\target_agents_bulk\fastapi-rag_28\repo
+    install: python -m venv D:\AI\target_agents_bulk\fastapi-rag_28\.venv && pip install
+      -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T21:24:00'
+  notes: repo_unreachable_at_discover
+- id: rag-fastapi
+  repo_url: https://github.com/shauryasharma45/rag-fastapi
+  repo_name: rag-fastapi
+  framework: FastAPI+RAG
+  local_path: D:\AI\target_agents_bulk\rag-fastapi_29\repo
+  venv_path: D:\AI\target_agents_bulk\rag-fastapi_29\.venv
+  candidate_reason: RAG FastAPI
+  status: clone_failed
+  clone_success: false
+  install_success: false
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: D
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: false
+  has_dockerfile: false
+  has_fastapi: false
+  has_flask: false
+  has_langchain: false
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints: *id001
+  api_base_url: ''
+  assigned_port: 19030
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: clone
+  error_summary: 'Cloning into ''D:\AI\target_agents_bulk\rag-fastapi\repo''...
+
+    remote: Repository not found.
+
+    fatal: repository ''https://github.com/shauryasharma45/rag-fastapi/'' not found
+
+    '
+  deploy_commands:
+    clone: git clone https://github.com/shauryasharma45/rag-fastapi D:\AI\target_agents_bulk\rag-fastapi_29\repo
+    install: python -m venv D:\AI\target_agents_bulk\rag-fastapi_29\.venv && pip install
+      -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T21:24:01'
+  notes: repo_unreachable_at_discover
+- id: rag-chatbot-api
+  repo_url: https://github.com/broadfield-ai/rag-chatbot-api
+  repo_name: rag-chatbot-api
+  framework: FastAPI+RAG
+  local_path: D:\AI\target_agents_bulk\rag-chatbot-api_30\repo
+  venv_path: D:\AI\target_agents_bulk\rag-chatbot-api_30\.venv
+  candidate_reason: RAG chatbot API
+  status: clone_failed
+  clone_success: false
+  install_success: false
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: D
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: false
+  has_dockerfile: false
+  has_fastapi: false
+  has_flask: false
+  has_langchain: false
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints: *id001
+  api_base_url: ''
+  assigned_port: 19031
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: clone
+  error_summary: 'Cloning into ''D:\AI\target_agents_bulk\rag-chatbot-api\repo''...
+
+    remote: Repository not found.
+
+    fatal: repository ''https://github.com/broadfield-ai/rag-chatbot-api/'' not found
+
+    '
+  deploy_commands:
+    clone: git clone https://github.com/broadfield-ai/rag-chatbot-api D:\AI\target_agents_bulk\rag-chatbot-api_30\repo
+    install: python -m venv D:\AI\target_agents_bulk\rag-chatbot-api_30\.venv && pip
+      install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T21:24:09'
+  notes: repo_unreachable_at_discover
+- id: fastapi-chatbot
+  repo_url: https://github.com/part-ai/fastapi-chatbot
+  repo_name: fastapi-chatbot
+  framework: FastAPI
+  local_path: D:\AI\target_agents_bulk\fastapi-chatbot_31\repo
+  venv_path: D:\AI\target_agents_bulk\fastapi-chatbot_31\.venv
+  candidate_reason: FastAPI chatbot
+  status: clone_failed
+  clone_success: false
+  install_success: false
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: D
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: false
+  has_dockerfile: false
+  has_fastapi: false
+  has_flask: false
+  has_langchain: false
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints: *id001
+  api_base_url: ''
+  assigned_port: 19032
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: clone
+  error_summary: 'Cloning into ''D:\AI\target_agents_bulk\fastapi-chatbot\repo''...
+
+    remote: Repository not found.
+
+    fatal: repository ''https://github.com/part-ai/fastapi-chatbot/'' not found
+
+    '
+  deploy_commands:
+    clone: git clone https://github.com/part-ai/fastapi-chatbot D:\AI\target_agents_bulk\fastapi-chatbot_31\repo
+    install: python -m venv D:\AI\target_agents_bulk\fastapi-chatbot_31\.venv && pip
+      install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T21:24:10'
+  notes: repo_unreachable_at_discover
+- id: gpt-researcher
+  repo_url: https://github.com/assafelovic/gpt-researcher
+  repo_name: gpt-researcher
+  framework: Research Agent
+  local_path: D:\AI\target_agents_bulk\gpt-researcher_32\repo
+  venv_path: D:\AI\target_agents_bulk\gpt-researcher\.venv
+  candidate_reason: research agent (heavy)
+  status: installed
+  clone_success: true
+  install_success: true
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: C
+  requires_llm_key: true
+  requires_database: true
+  requires_docker: false
+  requires_frontend: true
+  has_requirements_txt: true
+  has_pyproject_toml: true
+  has_dockerfile: true
+  has_fastapi: true
+  has_flask: false
+  has_langchain: true
+  has_langgraph: true
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: true
+  has_qdrant: false
+  likely_endpoints: {}
+  api_base_url: ''
+  assigned_port: 19033
+  docs_endpoint: /docs
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: ''
+  error_summary: ''
+  deploy_commands:
+    clone: git clone https://github.com/assafelovic/gpt-researcher D:\AI\target_agents_bulk\gpt-researcher_32\repo
+    install: python -m venv D:\AI\target_agents_bulk\gpt-researcher_32\.venv && pip
+      install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T22:17:47'
+  notes: repo_reachable
+  install_attempted: true
+  install_skipped: false
+  skip_reason: ''
+  error_type: ''
+- id: sample-app-aoai-chatgpt
+  repo_url: https://github.com/microsoft/sample-app-aoai-chatGPT
+  repo_name: sample-app-aoai-chatGPT
+  framework: Azure+FastAPI
+  local_path: D:\AI\target_agents_bulk\sample-app-aoai-chatgpt_33\repo
+  venv_path: D:\AI\target_agents_bulk\sample-app-aoai-chatgpt\.venv
+  candidate_reason: Azure chat RAG sample
+  status: installed
+  clone_success: true
+  install_success: true
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: C
+  requires_llm_key: true
+  requires_database: true
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: true
+  has_pyproject_toml: false
+  has_dockerfile: false
+  has_fastapi: false
+  has_flask: false
+  has_langchain: true
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints:
+    chat: /conversation
+  api_base_url: ''
+  assigned_port: 19034
+  docs_endpoint: /docs
+  health_endpoint: ''
+  chat_endpoint: /conversation
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: ''
+  error_summary: ''
+  deploy_commands:
+    clone: git clone https://github.com/microsoft/sample-app-aoai-chatGPT D:\AI\target_agents_bulk\sample-app-aoai-chatgpt_33\repo
+    install: python -m venv D:\AI\target_agents_bulk\sample-app-aoai-chatgpt_33\.venv
+      && pip install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T22:17:47'
+  notes: repo_reachable
+  install_attempted: false
+  install_skipped: false
+  skip_reason: already_installed
+  error_type: ''
+- id: chat-langchain
+  repo_url: https://github.com/langchain-ai/chat-langchain
+  repo_name: chat-langchain
+  framework: LangChain
+  local_path: D:\AI\target_agents_bulk\chat-langchain_34\repo
+  venv_path: D:\AI\target_agents_bulk\chat-langchain\.venv
+  candidate_reason: chat-langchain
+  status: installed
+  clone_success: true
+  install_success: true
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: C
+  requires_llm_key: true
+  requires_database: true
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: true
+  has_dockerfile: false
+  has_fastapi: true
+  has_flask: false
+  has_langchain: true
+  has_langgraph: true
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints:
+    health: /health
+  api_base_url: ''
+  assigned_port: 19035
+  docs_endpoint: /docs
+  health_endpoint: /health
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: ''
+  error_summary: ''
+  deploy_commands:
+    clone: git clone https://github.com/langchain-ai/chat-langchain D:\AI\target_agents_bulk\chat-langchain_34\repo
+    install: python -m venv D:\AI\target_agents_bulk\chat-langchain_34\.venv && pip
+      install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T22:19:46'
+  notes: repo_reachable
+  install_attempted: true
+  install_skipped: false
+  skip_reason: ''
+  error_type: ''
+- id: langchain
+  repo_url: https://github.com/hwchase17/langchain
+  repo_name: langchain
+  framework: LangChain
+  local_path: D:\AI\target_agents_bulk\langchain_35\repo
+  venv_path: D:\AI\target_agents_bulk\langchain\.venv
+  candidate_reason: langchain monorepo (heavy)
+  status: install_skipped
+  clone_success: true
+  install_success: false
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: D
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: true
+  has_requirements_txt: false
+  has_pyproject_toml: true
+  has_dockerfile: false
+  has_fastapi: false
+  has_flask: false
+  has_langchain: true
+  has_langgraph: true
+  has_llamaindex: false
+  has_chroma: true
+  has_faiss: false
+  has_qdrant: true
+  likely_endpoints: {}
+  api_base_url: ''
+  assigned_port: 19036
+  docs_endpoint: /docs
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: ''
+  error_summary: ''
+  deploy_commands:
+    clone: git clone https://github.com/hwchase17/langchain D:\AI\target_agents_bulk\langchain_35\repo
+    install: python -m venv D:\AI\target_agents_bulk\langchain_35\.venv && pip install
+      -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T22:19:46'
+  notes: repo_reachable
+  install_attempted: false
+  install_skipped: true
+  skip_reason: too_heavy_or_framework_repo
+  error_type: ''
+- id: dify
+  repo_url: https://github.com/langgenius/dify
+  repo_name: dify
+  framework: Dify
+  local_path: D:\AI\target_agents_bulk\dify_36\repo
+  venv_path: D:\AI\target_agents_bulk\dify\.venv
+  candidate_reason: platform (too heavy, register only)
+  status: install_skipped
+  clone_success: true
+  install_success: false
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: D
+  requires_llm_key: true
+  requires_database: true
+  requires_docker: true
+  requires_frontend: true
+  has_requirements_txt: false
+  has_pyproject_toml: true
+  has_dockerfile: true
+  has_fastapi: true
+  has_flask: false
+  has_langchain: true
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: true
+  has_faiss: false
+  has_qdrant: true
+  likely_endpoints:
+    health: /health
+  api_base_url: ''
+  assigned_port: 19037
+  docs_endpoint: /docs
+  health_endpoint: /health
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: ''
+  error_summary: ''
+  deploy_commands:
+    clone: git clone https://github.com/langgenius/dify D:\AI\target_agents_bulk\dify_36\repo
+    install: python -m venv D:\AI\target_agents_bulk\dify_36\.venv && pip install
+      -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T22:19:46'
+  notes: repo_reachable
+  install_attempted: false
+  install_skipped: true
+  skip_reason: too_heavy_or_framework_repo
+  error_type: ''
+- id: open-webui
+  repo_url: https://github.com/open-webui/open-webui
+  repo_name: open-webui
+  framework: OpenWebUI
+  local_path: D:\AI\target_agents_bulk\open-webui_37\repo
+  venv_path: D:\AI\target_agents_bulk\open-webui\.venv
+  candidate_reason: platform (too heavy, register only)
+  status: install_skipped
+  clone_success: true
+  install_success: false
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  grade: D
+  requires_llm_key: true
+  requires_database: true
+  requires_docker: false
+  requires_frontend: true
+  has_requirements_txt: true
+  has_pyproject_toml: true
+  has_dockerfile: true
+  has_fastapi: true
+  has_flask: false
+  has_langchain: true
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: true
+  has_faiss: true
+  has_qdrant: true
+  likely_endpoints:
+    docs: /docs
+    health: /health
+    openapi: /openapi.json
+    query: /query
+    upload: /upload
+  api_base_url: ''
+  assigned_port: 19038
+  docs_endpoint: /docs
+  health_endpoint: /health
+  chat_endpoint: ''
+  query_endpoint: /query
+  ingest_endpoint: /upload
+  request_format: ''
+  response_format_notes: ''
+  error_stage: ''
+  error_summary: ''
+  deploy_commands:
+    clone: git clone https://github.com/open-webui/open-webui D:\AI\target_agents_bulk\open-webui_37\repo
+    install: python -m venv D:\AI\target_agents_bulk\open-webui_37\.venv && pip install
+      -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-06T22:19:46'
+  notes: repo_reachable
+  install_attempted: false
+  install_skipped: true
+  skip_reason: too_heavy_or_framework_repo
+  error_type: ''
+- id: minimal_http_rag_harness
+  repo_url: platform:minimal_http_rag_agent
+  sample_type: local_variant
+  local_variant: true
+  rag_capable: true
+  poison_tested: true
+  poison_test_supported: true
+  http_api_success: true
+  grade: A
+  status: poison_tested
+  tested_at: '2026-06-06T23:08:44'
+- id: agent-service-toolkit
+  repo_url: https://github.com/JoshuaC215/agent-service-toolkit
+  repo_name: agent-service-toolkit
+  framework: LangGraph+FastAPI+Streamlit
+  local_path: D:\AI\target_agents_bulk\agent-service-toolkit\repo
+  venv_path: D:\AI\target_agents_bulk\agent-service-toolkit\.venv
+  candidate_reason: full agent toolkit with RAG
+  status: external_service_missing
+  clone_success: true
+  install_success: true
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  poison_test_supported: false
+  grade: C
+  sample_type: api_dependent_agent
+  local_variant: false
+  model_backend: ''
+  external_service_missing: true
+  api_dependency_notes: ANTHROPIC_API_KEY,GOOGLE_API_KEY,GOOGLE_APPLICATION_CREDENTIALS,AZURE_OPENAI_API_KEY
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: true
+  has_dockerfile: false
+  has_fastapi: true
+  has_flask: false
+  has_langchain: true
+  has_langgraph: true
+  has_llamaindex: false
+  has_chroma: true
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints:
+    health: /health
+    invoke: /invoke
+  api_base_url: ''
+  assigned_port: 19039
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: ''
+  error_summary: ''
+  deploy_commands:
+    clone: git clone --depth 1 https://github.com/JoshuaC215/agent-service-toolkit
+      D:\AI\target_agents_bulk\agent-service-toolkit\repo
+    install: python -m venv D:\AI\target_agents_bulk\agent-service-toolkit\.venv &&
+      pip install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-07T01:23:50'
+  notes: ''
+  install_attempted: true
+  error_type: ''
+- id: fastapi-langgraph-agent-production-ready-templat
+  repo_url: https://github.com/wassim249/fastapi-langgraph-agent-production-ready-template
+  repo_name: fastapi-langgraph-agent-production-ready-template
+  framework: FastAPI+LangGraph
+  local_path: D:\AI\target_agents_bulk\fastapi-langgraph-agent-production-ready-templat\repo
+  venv_path: D:\AI\target_agents_bulk\fastapi-langgraph-agent-production-ready-templat\.venv
+  candidate_reason: production LangGraph agent template
+  status: installed
+  clone_success: true
+  install_success: true
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  poison_test_supported: false
+  grade: C
+  sample_type: external_github_agent
+  local_variant: false
+  model_backend: ''
+  external_service_missing: false
+  api_dependency_notes: ''
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: true
+  has_dockerfile: false
+  has_fastapi: true
+  has_flask: false
+  has_langchain: true
+  has_langgraph: true
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints:
+    docs: /docs
+    health: /health
+    chat: /chat
+  api_base_url: ''
+  assigned_port: 19040
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: ''
+  error_summary: ''
+  deploy_commands:
+    clone: git clone --depth 1 https://github.com/wassim249/fastapi-langgraph-agent-production-ready-template
+      D:\AI\target_agents_bulk\fastapi-langgraph-agent-production-ready-templat\repo
+    install: python -m venv D:\AI\target_agents_bulk\fastapi-langgraph-agent-production-ready-templat\.venv
+      && pip install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-07T01:30:24'
+  notes: ''
+  install_attempted: true
+  error_type: ''
+- id: tech-trends-chatbot
+  repo_url: https://github.com/ruizguille/tech-trends-chatbot
+  repo_name: tech-trends-chatbot
+  framework: FastAPI+RAG
+  local_path: D:\AI\target_agents_bulk\tech-trends-chatbot\repo
+  venv_path: D:\AI\target_agents_bulk\tech-trends-chatbot\.venv
+  candidate_reason: A Retrieval Augmented Generation (RAG) chatbot implementation
+    with FastAPI, Redis and OpenAI's GPT-4o. The chatbot answe
+  status: installed
+  clone_success: true
+  install_success: true
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  poison_test_supported: false
+  grade: C
+  sample_type: external_github_agent
+  local_variant: false
+  model_backend: ''
+  external_service_missing: false
+  api_dependency_notes: ''
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: true
+  has_dockerfile: false
+  has_fastapi: true
+  has_flask: false
+  has_langchain: false
+  has_langgraph: false
+  has_llamaindex: true
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints:
+    health: /health
+  api_base_url: ''
+  assigned_port: 19041
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: ''
+  error_summary: ''
+  deploy_commands:
+    clone: git clone --depth 1 https://github.com/ruizguille/tech-trends-chatbot D:\AI\target_agents_bulk\tech-trends-chatbot\repo
+    install: python -m venv D:\AI\target_agents_bulk\tech-trends-chatbot\.venv &&
+      pip install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-07T01:42:02'
+  notes: ''
+  install_attempted: true
+  error_type: ''
+- id: ai-chatkit
+  repo_url: https://github.com/pasonk/ai-chatkit
+  repo_name: ai-chatkit
+  framework: LangGraph+RAG
+  local_path: D:\AI\target_agents_bulk\ai-chatkit\repo
+  venv_path: D:\AI\target_agents_bulk\ai-chatkit\.venv
+  candidate_reason: A full-stack ai agent chat project, built with langgraph+fastapi+nextjs,
+    supporting tool invocation and RAG knowledge ba
+  status: external_service_missing
+  clone_success: true
+  install_success: true
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  poison_test_supported: false
+  grade: C
+  sample_type: api_dependent_agent
+  local_variant: false
+  model_backend: ''
+  external_service_missing: true
+  api_dependency_notes: DASHSCOPE_API_KEY
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: true
+  has_dockerfile: false
+  has_fastapi: true
+  has_flask: false
+  has_langchain: true
+  has_langgraph: true
+  has_llamaindex: false
+  has_chroma: true
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints:
+    chat: /chat
+    invoke: /invoke
+  api_base_url: ''
+  assigned_port: 19042
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: ''
+  error_summary: ''
+  deploy_commands:
+    clone: git clone --depth 1 https://github.com/pasonk/ai-chatkit D:\AI\target_agents_bulk\ai-chatkit\repo
+    install: python -m venv D:\AI\target_agents_bulk\ai-chatkit\.venv && pip install
+      -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-07T01:49:20'
+  notes: ''
+  install_attempted: true
+  error_type: ''
+- id: enterprise-rag-chatbot
+  repo_url: https://github.com/coreybello/enterprise-rag-chatbot
+  repo_name: enterprise-rag-chatbot
+  framework: FastAPI+AgenticRAG
+  local_path: D:\AI\target_agents_bulk\enterprise-rag-chatbot\repo
+  venv_path: D:\AI\target_agents_bulk\enterprise-rag-chatbot\.venv
+  candidate_reason: enterprise agentic RAG
+  status: external_service_missing
+  clone_success: true
+  install_success: true
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  poison_test_supported: false
+  grade: C
+  sample_type: api_dependent_agent
+  local_variant: false
+  model_backend: ''
+  external_service_missing: true
+  api_dependency_notes: COHERE_API_KEY,PINECONE_API_KEY
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: true
+  has_pyproject_toml: true
+  has_dockerfile: false
+  has_fastapi: true
+  has_flask: false
+  has_langchain: true
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: true
+  has_faiss: true
+  has_qdrant: true
+  likely_endpoints:
+    docs: /docs
+    health: /health
+    openapi: /openapi.json
+    chat: /chat
+    query: /query
+    ingest: /ingest
+    upload: /upload
+    documents: /documents
+  api_base_url: ''
+  assigned_port: 19043
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: ''
+  error_summary: ''
+  deploy_commands:
+    clone: git clone --depth 1 https://github.com/coreybello/enterprise-rag-chatbot
+      D:\AI\target_agents_bulk\enterprise-rag-chatbot\repo
+    install: python -m venv D:\AI\target_agents_bulk\enterprise-rag-chatbot\.venv
+      && pip install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-07T02:38:32'
+  notes: ''
+  install_attempted: true
+  error_type: ''
+- id: openhands
+  repo_url: https://github.com/All-Hands-AI/OpenHands
+  repo_name: OpenHands
+  framework: Agent+Code
+  local_path: D:\AI\target_agents_bulk\openhands\repo
+  venv_path: D:\AI\target_agents_bulk\openhands\.venv
+  candidate_reason: skip-heavy
+  status: external_service_missing
+  clone_success: true
+  install_success: true
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  poison_test_supported: false
+  grade: C
+  sample_type: api_dependent_agent
+  local_variant: false
+  model_backend: ''
+  external_service_missing: true
+  api_dependency_notes: ANTHROPIC_API_KEY
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: true
+  has_dockerfile: false
+  has_fastapi: true
+  has_flask: false
+  has_langchain: false
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints:
+    health: /health
+    openapi: /openapi.json
+  api_base_url: ''
+  assigned_port: 19044
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: ''
+  error_summary: ''
+  deploy_commands:
+    clone: git clone --depth 1 https://github.com/All-Hands-AI/OpenHands D:\AI\target_agents_bulk\openhands\repo
+    install: python -m venv D:\AI\target_agents_bulk\openhands\.venv && pip install
+      -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-07T02:49:19'
+  notes: ''
+  install_attempted: true
+  error_type: ''
+- id: ai-chatbot
+  repo_url: https://github.com/vercel/ai-chatbot
+  repo_name: ai-chatbot
+  framework: Next.js
+  local_path: D:\AI\target_agents_bulk\ai-chatbot\repo
+  venv_path: D:\AI\target_agents_bulk\ai-chatbot\.venv
+  candidate_reason: skip-frontend
+  status: skipped_not_complete_agent
+  clone_success: true
+  install_success: false
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  poison_test_supported: false
+  grade: D
+  sample_type: external_github_agent
+  local_variant: false
+  model_backend: ''
+  external_service_missing: false
+  api_dependency_notes: ''
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: false
+  has_dockerfile: false
+  has_fastapi: false
+  has_flask: false
+  has_langchain: false
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints:
+    docs: ''
+    health: ''
+    openapi: ''
+    chat: ''
+    query: ''
+    invoke: ''
+    ingest: ''
+    upload: ''
+    documents: ''
+  api_base_url: ''
+  assigned_port: 19045
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: ''
+  error_summary: ''
+  deploy_commands:
+    clone: git clone --depth 1 https://github.com/vercel/ai-chatbot D:\AI\target_agents_bulk\ai-chatbot\repo
+    install: python -m venv D:\AI\target_agents_bulk\ai-chatbot\.venv && pip install
+      -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: ''
+  notes: ''
+- id: streamer-sales
+  repo_url: https://github.com/PeterH0323/Streamer-Sales
+  repo_name: Streamer-Sales
+  framework: GitHubSearch+RAG
+  local_path: D:\AI\target_agents_bulk\streamer-sales\repo
+  venv_path: D:\AI\target_agents_bulk\streamer-sales\.venv
+  candidate_reason: Streamer-Sales 销冠 —— 卖货主播 LLM 大模型🛒🎁，一个能够根据给定的商品特点从激发用户购买意愿角度出发进行商品解说的卖货主播大模型。🚀⭐内含详细的数据生成流程❗
+    📦另外还集成了 LMDeploy 加速推理🚀、RAG检索
+  status: installed
+  clone_success: true
+  install_success: true
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  poison_test_supported: false
+  grade: C
+  sample_type: external_github_agent
+  local_variant: false
+  model_backend: ''
+  external_service_missing: false
+  api_dependency_notes: ''
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: true
+  has_pyproject_toml: false
+  has_dockerfile: false
+  has_fastapi: true
+  has_flask: false
+  has_langchain: true
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: true
+  has_qdrant: false
+  likely_endpoints:
+    chat: /chat
+  api_base_url: ''
+  assigned_port: 19046
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: ''
+  error_summary: ''
+  deploy_commands:
+    clone: git clone --depth 1 https://github.com/PeterH0323/Streamer-Sales D:\AI\target_agents_bulk\streamer-sales\repo
+    install: python -m venv D:\AI\target_agents_bulk\streamer-sales\.venv && pip install
+      -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-07T02:54:58'
+  notes: ''
+  install_attempted: true
+  error_type: ''
+- id: rag-template
+  repo_url: https://github.com/stackitcloud/rag-template
+  repo_name: rag-template
+  framework: FastAPI+RAG
+  local_path: D:\AI\target_agents_bulk\rag-template\repo
+  venv_path: D:\AI\target_agents_bulk\rag-template\.venv
+  candidate_reason: Template for AI chatbots & document management using Retrieval-Augmented
+    Generation with vector search and FastAPI.
+  status: installed
+  clone_success: true
+  install_success: true
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  poison_test_supported: false
+  grade: C
+  sample_type: external_github_agent
+  local_variant: false
+  model_backend: ''
+  external_service_missing: false
+  api_dependency_notes: ''
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: true
+  has_dockerfile: false
+  has_fastapi: true
+  has_flask: false
+  has_langchain: true
+  has_langgraph: true
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: true
+  likely_endpoints:
+    upload: /upload_file
+  api_base_url: ''
+  assigned_port: 19047
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: ''
+  error_summary: ''
+  deploy_commands:
+    clone: git clone --depth 1 https://github.com/stackitcloud/rag-template D:\AI\target_agents_bulk\rag-template\repo
+    install: python -m venv D:\AI\target_agents_bulk\rag-template\.venv && pip install
+      -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-07T03:03:58'
+  notes: ''
+  install_attempted: true
+  error_type: ''
+- id: medgraph-ai
+  repo_url: https://github.com/asanmateu/medgraph-ai
+  repo_name: medgraph-ai
+  framework: FastAPI+RAG
+  local_path: D:\AI\target_agents_bulk\medgraph-ai\repo
+  venv_path: D:\AI\target_agents_bulk\medgraph-ai\.venv
+  candidate_reason: Healthcare RAG agent with Neo4j knowledge graphs - Query medical
+    data using LangChain, FastAPI & Streamlit
+  status: installed
+  clone_success: true
+  install_success: true
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  poison_test_supported: false
+  grade: C
+  sample_type: external_github_agent
+  local_variant: false
+  model_backend: ''
+  external_service_missing: false
+  api_dependency_notes: ''
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: false
+  has_pyproject_toml: true
+  has_dockerfile: false
+  has_fastapi: true
+  has_flask: false
+  has_langchain: true
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints: {}
+  api_base_url: ''
+  assigned_port: 19048
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: ''
+  error_summary: ''
+  deploy_commands:
+    clone: git clone --depth 1 https://github.com/asanmateu/medgraph-ai D:\AI\target_agents_bulk\medgraph-ai\repo
+    install: python -m venv D:\AI\target_agents_bulk\medgraph-ai\.venv && pip install
+      -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-07T03:07:40'
+  notes: ''
+  install_attempted: true
+  error_type: ''
+- id: ned-admission-llm-chatbot-fyp
+  repo_url: https://github.com/ali-bin-kashif/NED-Admission-LLM-Chatbot-FYP
+  repo_name: NED-Admission-LLM-Chatbot-FYP
+  framework: GitHubSearch+RAG
+  local_path: D:\AI\target_agents_bulk\ned-admission-llm-chatbot-fyp\repo
+  venv_path: D:\AI\target_agents_bulk\ned-admission-llm-chatbot-fyp\.venv
+  candidate_reason: 'This is the final year project of university, in which my group
+    is developing a chatbot for university admissions using '
+  status: external_service_missing
+  clone_success: true
+  install_success: true
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  poison_test_supported: false
+  grade: C
+  sample_type: api_dependent_agent
+  local_variant: false
+  model_backend: ''
+  external_service_missing: true
+  api_dependency_notes: GOOGLE_API_KEY,PINECONE_API_KEY
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: true
+  has_pyproject_toml: false
+  has_dockerfile: false
+  has_fastapi: true
+  has_flask: false
+  has_langchain: true
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: true
+  has_qdrant: false
+  likely_endpoints: {}
+  api_base_url: ''
+  assigned_port: 19049
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: ''
+  error_summary: ''
+  deploy_commands:
+    clone: git clone --depth 1 https://github.com/ali-bin-kashif/NED-Admission-LLM-Chatbot-FYP
+      D:\AI\target_agents_bulk\ned-admission-llm-chatbot-fyp\repo
+    install: python -m venv D:\AI\target_agents_bulk\ned-admission-llm-chatbot-fyp\.venv
+      && pip install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-07T03:17:06'
+  notes: ''
+  install_attempted: true
+  error_type: ''
+- id: ai-healthcare-system
+  repo_url: https://github.com/pavanbadempet/AI-Healthcare-System
+  repo_name: AI-Healthcare-System
+  framework: GitHubSearch+RAG
+  local_path: D:\AI\target_agents_bulk\ai-healthcare-system\repo
+  venv_path: D:\AI\target_agents_bulk\ai-healthcare-system\.venv
+  candidate_reason: 'AI-powered healthcare platform combining Machine Learning for
+    multi-disease prediction (Diabetes, Heart, Liver, Kidney, '
+  status: external_service_missing
+  clone_success: true
+  install_success: true
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  poison_test_supported: false
+  grade: C
+  sample_type: api_dependent_agent
+  local_variant: false
+  model_backend: ''
+  external_service_missing: true
+  api_dependency_notes: ANTHROPIC_API_KEY,GOOGLE_API_KEY
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: true
+  has_pyproject_toml: true
+  has_dockerfile: false
+  has_fastapi: true
+  has_flask: false
+  has_langchain: true
+  has_langgraph: true
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints:
+    docs: /docs
+    health: /healthz
+    openapi: /openapi.json
+    chat: /chat
+  api_base_url: ''
+  assigned_port: 19050
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: ''
+  error_summary: ''
+  deploy_commands:
+    clone: git clone --depth 1 https://github.com/pavanbadempet/AI-Healthcare-System
+      D:\AI\target_agents_bulk\ai-healthcare-system\repo
+    install: python -m venv D:\AI\target_agents_bulk\ai-healthcare-system\.venv &&
+      pip install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-07T03:20:41'
+  notes: ''
+  install_attempted: true
+  error_type: ''
+- id: rag-fastapi-chatbot
+  repo_url: https://github.com/haontuhcmut/rag-fastapi-chatbot
+  repo_name: rag-fastapi-chatbot
+  framework: GitHubSearch+RAG
+  local_path: D:\AI\target_agents_bulk\rag-fastapi-chatbot\repo
+  venv_path: D:\AI\target_agents_bulk\rag-fastapi-chatbot\.venv
+  candidate_reason: github search hit
+  status: installed
+  clone_success: true
+  install_success: true
+  startup_success: false
+  http_api_success: false
+  rag_capable: false
+  poison_tested: false
+  poison_test_supported: false
+  grade: C
+  sample_type: external_github_agent
+  local_variant: false
+  model_backend: ''
+  external_service_missing: false
+  api_dependency_notes: ''
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  requires_frontend: false
+  has_requirements_txt: true
+  has_pyproject_toml: false
+  has_dockerfile: false
+  has_fastapi: true
+  has_flask: false
+  has_langchain: true
+  has_langgraph: false
+  has_llamaindex: false
+  has_chroma: false
+  has_faiss: false
+  has_qdrant: false
+  likely_endpoints: {}
+  api_base_url: ''
+  assigned_port: 19051
+  docs_endpoint: ''
+  health_endpoint: ''
+  chat_endpoint: ''
+  query_endpoint: ''
+  ingest_endpoint: ''
+  request_format: ''
+  response_format_notes: ''
+  error_stage: ''
+  error_summary: ''
+  deploy_commands:
+    clone: git clone --depth 1 https://github.com/haontuhcmut/rag-fastapi-chatbot
+      D:\AI\target_agents_bulk\rag-fastapi-chatbot\repo
+    install: python -m venv D:\AI\target_agents_bulk\rag-fastapi-chatbot\.venv &&
+      pip install -r requirements.txt
+    start: uvicorn app:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-07T03:24:39'
+  notes: ''
+  install_attempted: true
+  error_type: ''
+- id: context-agent-rag
+  repo_url: https://github.com/webcodelabb/ContextAgent
+  repo_name: ContextAgent
+  framework: FastAPI+LangChain+Chroma
+  local_path: D:\AI\target_agents_bulk\context-agent-rag\repo
+  venv_path: D:\AI\target_agents_bulk\context-agent-rag\.venv
+  candidate_reason: modular RAG agent with HTTP ingest and chat
+  status: installed
+  clone_success: true
+  install_success: false
+  startup_success: false
+  http_api_success: false
+  rag_capable: true
+  poison_tested: false
+  poison_test_supported: true
+  grade: D
+  sample_type: external_github_agent
+  local_variant: false
+  requires_llm_key: true
+  requires_database: false
+  requires_docker: false
+  likely_endpoints:
+    health: /health
+    chat: /chat/
+    upload: /ingest/upload
+  api_base_url: ''
+  assigned_port: 19062
+  chat_endpoint: /chat/
+  ingest_endpoint: /ingest/upload
+  request_format: context_agent_chat
+  deploy_commands:
+    clone: git clone --depth 1 https://github.com/webcodelabb/ContextAgent D:\AI\target_agents_bulk\context-agent-rag\repo
+    install: python -m venv D:\AI\target_agents_bulk\context-agent-rag\.venv && pip
+      install -r requirements.txt
+    start: uvicorn app.main:app --host 127.0.0.1 --port <port>
+  tested_at: '2026-06-08T12:00:00'
+  notes: newly_deployed_for_15_agent_scale

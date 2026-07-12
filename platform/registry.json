@@ -1,0 +1,82 @@
+{
+  "modules": {
+    "prompt": {
+      "label": "Prompt 直接注入 (PyRIT/ASB)",
+      "dir": "prompt_poison",
+      "enabled": true,
+      "requires_api": true,
+      "quick": ["python", "mytest/deepseek_direct_prompt_injection_experiment.py"],
+      "result_glob": "mytest/results/deepseek_direct_prompt_injection_*.json"
+    },
+    "chain": {
+      "label": "推理链 Prompt 注入",
+      "dir": "chain_poison/chain_poison_platform",
+      "enabled": true,
+      "requires_api": true,
+      "quick": ["python", "-m", "runners.run_agent_chain_poison", "--limit", "3", "--fast"],
+      "result_glob": "outputs/agent_chain_poison/*.csv"
+    },
+    "memory": {
+      "label": "记忆投毒",
+      "dir": "memory_poison",
+      "enabled": true,
+      "requires_api": true,
+      "quick": ["python", "run_experiment.py", "--pilot"],
+      "result_pointer": "plugin/results/latest.json"
+    },
+    "rag": {
+      "label": "RAG 知识库投毒",
+      "dir": "rag_poison/rag_poison_platform",
+      "enabled": true,
+      "requires_api": true,
+      "quick": ["python", "target_agents/scripts/run_self_proof_demo.py", "--rag-only"],
+      "result_glob": "results/self_proof_rag_demo.csv"
+    },
+    "mcp": {
+      "label": "MCP 工具投毒",
+      "dir": "MCP_test",
+      "enabled": true,
+      "requires_api": true,
+      "quick": ["python", "scripts/smoke_test.py"],
+      "result_glob": "../MCP_result/mcp_eval_native_*.csv"
+    },
+    "multiagent": {
+      "label": "多 Agent 协作投毒",
+      "dir": "multiagent_poison",
+      "enabled": true,
+      "requires_api": false,
+      "quick": ["python", "run_benchmark.py", "--mode", "dry"],
+      "result_glob": "benchmark_results/summary.json"
+    },
+    "defense": {
+      "label": "五层防御引擎 (内置样本)",
+      "dir": "defense_engine/defense_engine",
+      "enabled": true,
+      "requires_api": false,
+      "quick": ["python", "demo_end_to_end.py"]
+    }
+  },
+  "targets": [
+    {
+      "id": "library_faq_agent",
+      "name": "图书馆 FAQ Agent (Prompt 实验)",
+      "capabilities": ["chat"],
+      "status": "online",
+      "description": "prompt_poison DeepSeek 单轮 FAQ agent"
+    },
+    {
+      "id": "minimal_rag_agent",
+      "name": "Minimal HTTP RAG Agent",
+      "base_url": "http://127.0.0.1:18100",
+      "port": 18100,
+      "capabilities": ["chat", "rag"],
+      "status": "registered"
+    },
+    {
+      "id": "mcp_native_agents",
+      "name": "MCP 原生 Agent 集群 (6 框架)",
+      "capabilities": ["chat", "tools", "mcp"],
+      "status": "registered"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+agent_id: fastapi-meets-langgraph
+sample_type: external_github_agent
+local_path: D:\AI\target_agents_bulk\fastapi-meets-langgraph\repo
+repo_path: D:\AI\target_agents_bulk\fastapi-meets-langgraph\repo
+base_url: http://127.0.0.1:19001
+assigned_port: 19001
+start_command: '"D:\AI\target_agents_bulk\fastapi-meets-langgraph\.venv\Scripts\python.exe"
+  -m uvicorn app:app --host 127.0.0.1 --port 19001'
+health_endpoint: /docs
+ingest_endpoint: ''
+query_endpoint: /agents/invoke
+reset_endpoint: ''
+request_format: json
+query_param: prompt
+query_payload_template: {}
+ingest_payload_template:
+  text: '{text}'
+  doc_id: '{doc_id}'
+response_path: response
+requires_api_key: true
+deepseek_compat: true
+notes: LangGraph invoke via query param prompt; no standard ingest API

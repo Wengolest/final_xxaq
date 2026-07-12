@@ -1,0 +1,33 @@
+{
+  "repo_path": "C:\\Users\\Lenovo\\Desktop\\new_summary_agent_poisoning\\git_download_test\\agentcrawler\\github_agents_famous_20\\crewai",
+  "readme_path": "C:\\Users\\Lenovo\\Desktop\\new_summary_agent_poisoning\\git_download_test\\agentcrawler\\github_agents_famous_20\\crewai\\README.md",
+  "readme_chars": 34874,
+  "primary_id": "multi_agent",
+  "primary_label_zh": "多智能体协作型",
+  "scores": {
+    "conversational": 2.0,
+    "rag": 0.8,
+    "tool_execution": 2.8,
+    "workflow_planning": 10.3,
+    "multi_agent": 15.1
+  },
+  "method": "rules",
+  "rationale": "基于 README 关键词与顶层目录名的规则打分。",
+  "runner_up": [
+    {
+      "id": "workflow_planning",
+      "label_zh": "流程规划型",
+      "score": 10.3
+    },
+    {
+      "id": "tool_execution",
+      "label_zh": "工具执行型",
+      "score": 2.8
+    },
+    {
+      "id": "conversational",
+      "label_zh": "对话问答型",
+      "score": 2.0
+    }
+  ]
+}

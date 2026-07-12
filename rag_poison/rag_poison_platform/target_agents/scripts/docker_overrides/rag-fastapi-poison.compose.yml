@@ -1,0 +1,31 @@
+# Poison-test override: avoid host port 80/6379 conflicts; skip nginx front door.
+services:
+  nginx-dev:
+    profiles: ["poison_skip"]
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.poison.test
+    ports:
+      - "19051:8000"
+  redis:
+    ports:
+      - "16379:6379"
+  db:
+    ports:
+      - "15433:5432"
+  minio:
+    ports:
+      - "19000:9000"
+      - "19001:9001"
+  ollama:
+    ports:
+      - "11435:11434"
+    environment:
+      - LLM_MODEL=qwen2.5:0.5b
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:11434/api/tags"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 120s
