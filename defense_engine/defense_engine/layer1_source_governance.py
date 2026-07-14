@@ -158,7 +158,7 @@ class SourceGovernance:
             rule_matches = engine.evaluate(ctx.content, context_dict, layer_prefix="SG")
 
         # 汇总结果
-        return self._summarize(checks, rule_matches, t_start, ctx.trust_level)
+        return self._summarize(checks, rule_matches, t_start, ctx.trust_level, content=ctx.content)
 
     # ---- 单项检查 ----
 
@@ -278,7 +278,7 @@ class SourceGovernance:
             ))
         return flags
 
-    def _summarize(self, checks, rule_matches, t_start, trust_level):
+    def _summarize(self, checks, rule_matches, t_start, trust_level, content=None):
         """汇总结果 (委托给 scoring.compute_layer_result)"""
         all_flags = self._checks_to_flags(checks) + self._rule_matches_to_flags(rule_matches)
         return compute_layer_result(
@@ -286,6 +286,7 @@ class SourceGovernance:
             flags=all_flags,
             trust_in=trust_level,
             t_start=t_start,
+            content=content,
         )
 
     @staticmethod

@@ -1,9 +1,9 @@
 {
-  "description": "防御规则预设库 — 20+ 条初始规则, 覆盖五层",
-  "version": "1.0",
+  "description": "防御规则预设库 — 31 条规则, 覆盖五层。已针对真实攻击模块 payload 做正则泛化。",
+  "version": "1.1",
   "rules": [
     {
-      "_comment": "========== L1: 源头数据与供应链治理 =========="
+      "_comment": "========== L1: 源头数据与供应链治理 (8 条) =========="
     },
     {
       "rule_id": "SG001",
@@ -20,12 +20,12 @@
     {
       "rule_id": "SG002",
       "name": "伪系统指令检测",
-      "description": "检测试图覆盖系统指令的关键词模式",
+      "description": "检测试图覆盖/忽略系统指令的语义模式 (中英文, 含 '忽略之前所有' 等自然语言变体)",
       "enabled": true,
       "action": "block",
       "priority": 2,
       "pattern_type": "regex",
-      "pattern": "忽略(此前|所有|系统|限制)|优先(执行|输出)|覆盖(规则|限制)|新的指令|从现在起你应该|你的新身份是",
+      "pattern": "忽略.{0,5}(此前|所有|系统|限制|指令|规则|安全策略|之前.{0,4}(指令|规则))|优先(执行|输出|遵循)|覆盖(规则|限制|安全|之前.{0,4}指令)|新的(指令|规则|角色|身份|系统消息)|从现在(起|开始).{0,6}(你应该|你不再|你是|你的)|你的新(身份|角色)是|你不再是|不再(是|作为).{0,4}(FAQ|图书馆|助手|agent|assistant)|forget (your|all) (training|instruction|previous|role)",
       "condition": null,
       "target_fields": ["content"]
     },
@@ -68,52 +68,76 @@
     {
       "rule_id": "SG006",
       "name": "角色伪造检测",
-      "description": "检测输入冒充系统管理员/开发者的角色伪造模式",
+      "description": "检测冒充系统管理员/开发者/审计人员的角色伪造 (含 '我是系统管理员' 等自然语言变体)",
       "enabled": true,
       "action": "block",
       "priority": 2,
       "pattern_type": "regex",
-      "pattern": "作为(系统|平台|安全)管理员|以开发者身份|我(现在)?是(系统|平台)的|你现在的角色是|你被重新配置为",
+      "pattern": "作为(系统|平台|安全|网络|运维|数据库)(管理|维护|运维|开发|审计|操作)员|以开发者身份|我(现在)?是(系统|平台|安全|网络)(的|管理|维护|运维|开发|审计)员|我(现在)?是(系统|平台)的|你现在的角色是|你被重新配置为|假装你是|扮演.{0,3}(系统|管理|开发)员",
+      "condition": null,
+      "target_fields": ["content"]
+    },
+    {
+      "rule_id": "SG007",
+      "name": "系统分隔符注入检测",
+      "description": "检测利用 ### / ``` / [system] 等标记分隔符伪造系统消息的注入模式",
+      "enabled": true,
+      "action": "block",
+      "priority": 2,
+      "pattern_type": "regex",
+      "pattern": "(#{2,}|```)\\s*(新?系统|system|SYSTEM|通知|公告|指令|命令|规则).{0,20}(消息|指令|命令|规则|配置|更新)|\\[system\\]|\\<\\|system\\|\\>|<<SYS>>",
+      "condition": null,
+      "target_fields": ["content"]
+    },
+    {
+      "rule_id": "SG008",
+      "name": "字符间距规避检测",
+      "description": "检测利用每个字符间插入空格/特殊符来绕过关键词匹配的编码规避模式",
+      "enabled": true,
+      "action": "warn",
+      "priority": 4,
+      "pattern_type": "regex",
+      "pattern": "((每个|每.{0,3})(字符|字母|字).{0,5}(之间|中间).{0,5}(加|插|放入|用).{0,5}(空格|空\\s*格|\\s))|(把|将).{0,10}(每个|每.{0,3})(字符|字母|字).{0,5}(分开|隔开|拆开|拆解)",
       "condition": null,
       "target_fields": ["content"]
     },
 
     {
-      "_comment": "========== L2: 模型交互与上下文约束 =========="
+      "_comment": "========== L2: 模型交互与上下文约束 (10 条) =========="
     },
     {
       "rule_id": "MI001",
       "name": "越狱绕过检测",
-      "description": "检测要求模型忽略系统指令的越狱模式 (中英文)",
+      "description": "检测要求模型忽略安全约束的越狱模式 (中英文, 含 'Developer Mode' '进入.*模式' 等)",
       "enabled": true,
       "action": "block",
       "priority": 1,
       "pattern_type": "regex",
-      "pattern": "ignore (previous|all|above|system) (instructions?|rules?|constraints?)(?:\\s|$|\\.|!|\\?)|DAN mode|jailbreak|developer mode|forget (your|all) (training|instruction)",
+      "pattern": "ignore (previous|all|above|system) (instructions?|rules?|constraints?|safety|security)(?:\\s|$|\\.|!|\\?)|DAN mode|jailbreak|developer mode|进入.{0,5}(开发者|Developer).{0,3}模式|安全策略已停用|不受限制的AI|unrestricted AI|no ethical|maximum mode|forget (your|all) (training|instruction|safety|role)|act as (DAN|an unrestricted)|假装你是.{0,5}(不受|无限|自由)|忽略.{0,5}(之前|此前|上面|以上|系统).{0,5}(所有|全部|一切).{0,5}(指令|规则|限制|约束|安全策略)|不要.?再.?遵.?守|停止.?遵.?守|无视.{0,5}(所有|全部|系统|安全).{0,5}(指令|规则|限制)|现在起.{0,5}你(只|必须|应该|要)",
       "condition": null,
       "target_fields": ["content"]
     },
     {
       "rule_id": "MI002",
       "name": "敏感信息泄露检测",
-      "description": "检测请求输出系统内部信息的行为",
+      "description": "检测请求输出系统内部信息的行为 (含 '显示你的 system prompt' 等)",
       "enabled": true,
       "action": "block",
       "priority": 2,
       "pattern_type": "regex",
-      "pattern": "(列出|输出|显示|导出|泄露)(所有|全部|all).{0,10}(用户|数据|文件|密码|密钥|token|api.key)",
+      "pattern": "(列出|输出|显示|导出|泄露|reveal|show|display|tell).{0,15}(用户|数据|文件|密码|密钥|token|api.key|系统提示|system prompt|隐藏口令|内部.{0,5}(规则|配置|口令|指令|秘密|信息))",
       "condition": null,
       "target_fields": ["content"]
     },
     {
       "rule_id": "MI003",
-      "name": "角色伪造识别",
-      "description": "用户消息中冒充系统通知/管理员公告的模式",
+      "name": "系统通知冒充检测",
+      "description": "检测冒充系统升级/安全通知的模式 (含 '###  等 Markdown 伪装)",
       "enabled": true,
       "action": "block",
       "priority": 2,
       "pattern_type": "regex",
-      "pattern": "^(系统|官方|管理员|安全)(通知|公告|升级|维护|更新)",
+      "pattern": "(^|[\\n#]{2,}\\s*)(系统|官方|管理员|安全|紧急|URGENT|SYSTEM|ADMIN).{0,20}(通知|公告|升级|维护|更新|广播|broadcast|override|覆盖|暂停|suspended)",
       "condition": null,
       "target_fields": ["content"]
     },
@@ -132,19 +156,19 @@
     {
       "rule_id": "MI005",
       "name": "危险指令检测",
-      "description": "检测用户输入中的明确危险操作指令 (format/shutdown/reboot 因在技术语境中过于常见已移除，由 L4 程序化检测兜底)",
+      "description": "检测输入中的恶意操作指令 (SQL注入/反弹shell/越权操作)",
       "enabled": true,
       "action": "block",
       "priority": 3,
       "pattern_type": "keyword",
-      "pattern": "drop table,反弹shell,reverse shell",
+      "pattern": "drop table,反弹shell,reverse shell,钓鱼邮件,phishing,恶意代码,malware,编写.{0,3}病毒,制作.{0,3}炸弹",
       "condition": null,
       "target_fields": ["content"]
     },
     {
       "rule_id": "MI006",
       "name": "违规URL/内网地址检测",
-      "description": "检测请求访问内网/本地地址的尝试 (仅 warn，避免 LLM 输出示例配置时误杀)",
+      "description": "检测请求访问内网/本地地址的尝试 (仅 warn)",
       "enabled": true,
       "action": "warn",
       "priority": 2,
@@ -155,29 +179,65 @@
     },
     {
       "rule_id": "MI007",
-      "name": "管道投毒检测",
-      "description": "检测 curl/wget 管道到 shell 解释器的危险模式 (替代 MI005 中的 curl 关键词)",
+      "name": "管道/链式命令投毒检测",
+      "description": "检测 curl/wget 通过管道(|)或逻辑连接符(&&)执行shell的投毒模式",
       "enabled": true,
       "action": "block",
       "priority": 3,
       "pattern_type": "regex",
-      "pattern": "(curl|wget)\\s+.*?\\|\\s*(?:ba)?sh",
+      "pattern": "(curl|wget)\\s+.*?(\\||&&|;)\\s*(?:ba)?sh|pip\\s+install.*?--extra-index-url|npm\\s+install.*?--registry\\s+http",
       "condition": null,
       "target_fields": ["content", "tool_params"]
     },
+    {
+      "rule_id": "MI008",
+      "name": "越权与审批绕过检测",
+      "description": "检测要求跳过审批/测试/安全扫描或自动授权的越权请求",
+      "enabled": true,
+      "action": "block",
+      "priority": 2,
+      "pattern_type": "regex",
+      "pattern": "(跳过|绕过|bypass|skip|disable|停用|关闭).{0,8}(测试|审批|安全|扫描|检查|验证|审核|review|security|test|check|verif)|(自动|直接|无需|无须|不需要).{0,6}(通过|批准|授权|发布|部署|approve|grant|deploy|publish)|(临时|temporary|temp).{0,6}(提升|授予|elevat|grant).{0,6}(权限|permission|admin|access)|(忽略|skip).{0,5}(校验|检查|安全)",
+      "condition": null,
+      "target_fields": ["content"]
+    },
+    {
+      "rule_id": "MI009",
+      "name": "敏感文件路径检测",
+      "description": "检测尝试访问系统敏感路径或凭据文件的行为",
+      "enabled": true,
+      "action": "block",
+      "priority": 2,
+      "pattern_type": "regex",
+      "pattern": "(/etc/(passwd|shadow|hosts|sudoers)|~/\\.ssh/|/root/|\\.env\\b|credentials|id_rsa|C:\\\\Windows\\\\System32\\\\config)",
+      "condition": null,
+      "target_fields": ["content", "tool_params"]
+    },
+    {
+      "rule_id": "MI010",
+      "name": "中英文混合指令混淆检测",
+      "description": "检测中英文混合构造的恶意指令 (利用 LLM 跨语言理解绕过单语种检测)",
+      "enabled": true,
+      "action": "warn",
+      "priority": 3,
+      "pattern_type": "regex",
+      "pattern": "(输出|显示|告诉我|执行|运行).{0,10}(secret|password|token|key|API|system prompt|internal|confidential|隐藏|内部).{0,10}(now|立即|马上|directly|直接)|(show|output|reveal|display).{0,10}(隐藏|内部|秘密|口令|密码|系统).{0,10}(现在|立刻|马上|now)",
+      "condition": null,
+      "target_fields": ["content"]
+    },
 
     {
-      "_comment": "========== L3: 记忆读写安全控制 =========="
+      "_comment": "========== L3: 记忆读写安全控制 (4 条) =========="
     },
     {
       "rule_id": "MC001",
       "name": "记忆写入风险检测",
-      "description": "检测拟写入记忆的内容包含高风险模式",
+      "description": "检测拟写入记忆的内容包含高风险模式 (含 '跳过测试' '绕过校验' 等工作流破坏指令)",
       "enabled": true,
       "action": "quarantine",
       "priority": 1,
       "pattern_type": "keyword",
-      "pattern": "跳过测试,直接发布,自动通过,无需确认,新的规则是,从此以后,覆盖之前的",
+      "pattern": "跳过测试,直接发布,自动通过,无需确认,无需安全扫描,无需人工审核,新的规则是,从此以后,覆盖之前的,跳过CI,跳过安全,绕过审批,强制合并,关闭扫描,monkeypatch,fillna(0).drop,skip_checks,disable security,no-verify,skip validation,远程脚本,后门,忽略校验",
       "condition": null,
       "target_fields": ["content"]
     },
@@ -219,7 +279,7 @@
     },
 
     {
-      "_comment": "========== L4: 工具调用与执行安全控制 =========="
+      "_comment": "========== L4: 工具调用与执行安全控制 (6 条) =========="
     },
     {
       "rule_id": "TC001",
@@ -236,7 +296,7 @@
     {
       "rule_id": "TC002",
       "name": "高危动作确认",
-      "description": "高风险工具调用 (file_write/system_command 等) 需二次确认",
+      "description": "高风险工具调用需二次确认",
       "enabled": true,
       "action": "warn",
       "priority": 2,
@@ -248,7 +308,7 @@
     {
       "rule_id": "TC003",
       "name": "参数Schema校验",
-      "description": "工具调用的参数不符合 JSON Schema 时阻断",
+      "description": "工具调用参数不符合 JSON Schema 时阻断",
       "enabled": true,
       "action": "block",
       "priority": 2,
@@ -265,14 +325,14 @@
       "action": "quarantine",
       "priority": 3,
       "pattern_type": "regex",
-      "pattern": "<system>|\\[SYSTEM\\]|ignore previous|覆盖规则|新的角色是",
+      "pattern": "<system>|\\[SYSTEM\\]|ignore previous|覆盖规则|新的角色是|<HIDDEN>",
       "condition": null,
       "target_fields": ["tool_return"]
     },
     {
       "rule_id": "TC005",
       "name": "调用频率限制",
-      "description": "超频调用阻断 (每工具每窗口限次)",
+      "description": "超频调用阻断",
       "enabled": true,
       "action": "block",
       "priority": 2,
@@ -289,13 +349,13 @@
       "action": "block",
       "priority": 1,
       "pattern_type": "regex",
-      "pattern": "(\\.\\./|\\.\\.\\\\|/etc/passwd|C:\\\\Windows\\\\System32)",
+      "pattern": "(\\.\\./|\\.\\.\\\\|/etc/passwd|C:\\\\Windows\\\\System32|~/\\.ssh|/root/\\.bashrc)",
       "condition": null,
       "target_fields": ["tool_params"]
     },
 
     {
-      "_comment": "========== L5: 决策监督与多源验证 =========="
+      "_comment": "========== L5: 决策监督与多源验证 (4 条) =========="
     },
     {
       "rule_id": "DS001",
@@ -324,7 +384,7 @@
     {
       "rule_id": "DS003",
       "name": "连续阻断熔断",
-      "description": "连续 3 次被阻断 → 暂停执行链",
+      "description": "连续 3 次被阻断时暂停执行链",
       "enabled": true,
       "action": "block",
       "priority": 1,
@@ -336,7 +396,7 @@
     {
       "rule_id": "DS004",
       "name": "高风险比率熔断",
-      "description": "最近 10 次决策中 >50% 为高风险 → 暂停",
+      "description": "最近 10 次决策中 >50% 为高风险时暂停",
       "enabled": true,
       "action": "block",
       "priority": 2,

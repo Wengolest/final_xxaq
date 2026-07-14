@@ -106,6 +106,7 @@ def compute_layer_result(
     trust_in: float,
     t_start: float,
     weights: Optional[LayerWeights] = None,
+    content: Optional[str] = None,
 ) -> LayerCheckResult:
     """
     统一的逐层结果计算。
@@ -116,11 +117,22 @@ def compute_layer_result(
         trust_in: 进入此层时的信任度
         t_start: 本层开始时间戳 (time.perf_counter())
         weights: 权重配置 (默认按 layer 自动选取)
+        content: 待检测文本 (可选, 传入时自动运行 HeuristicScorer 语义检测)
 
     Returns:
         LayerCheckResult 含 passed / action / risk_score / trust_level / flags
     """
     w = weights or get_layer_weights(layer)
+
+    # HeuristicScorer 语义检测: 仅 L1 运行一次，激活 semantic_block/warn 权重通道
+    if content and isinstance(content, str) and len(content) > 5 and layer == DefenseLayer.SOURCE_GOVERNANCE:
+        try:
+            scorer = HeuristicScorer()
+            sem_score = scorer.score(content)
+            if sem_score.severity in ("block", "warn"):
+                flags.append(scorer.to_check_flag(sem_score))
+        except Exception:
+            pass
 
     blocked = False
     action = "pass"
@@ -250,10 +262,115 @@ class SemanticScorer(ABC):
         )
 
 
+class HeuristicScorer(SemanticScorer):
+    """
+    启发式语义检测器: 基于危险关键词密度 + 类别共现频率计算风险评分。
+
+    取代 PassThroughScorer 占位实现，激活 semantic_block=0.40 / semantic_warn=0.15 权重通道。
+    不依赖外部 ML 模型，纯规则启发式——填补正则规则对语义变体的盲区。
+    """
+
+    # 危险关键词按语义类别分组 (共现跨组越多，风险越高)
+    DANGER_CATEGORIES = {
+        "instruction_override": [
+            "忽略", "无视", "覆盖", "绕过", "跳过", "override", "ignore", "bypass",
+            "disable", "停用", "关闭安全", "不再遵守", "忘记",
+        ],
+        "role_manipulation": [
+            "系统管理员", "开发者模式", "developer mode", "DAN", "新身份",
+            "重新配置", "假装你是", "你现在是", "你的角色", "root", "admin",
+        ],
+        "information_extraction": [
+            "系统提示", "system prompt", "内部", "隐藏", "口令", "密码", "secret",
+            "密钥", "token", "API key", "配置", "internal", "confidential",
+            "输出", "显示", "reveal", "output", "泄露",
+        ],
+        "harmful_action": [
+            "钓鱼", "phishing", "恶意", "malware", "病毒", "攻击", "exploit",
+            "入侵", "hack", "破坏", "删除所有", "drop table", "rm -rf",
+            "反弹shell", "reverse shell",
+        ],
+        "auth_bypass": [
+            "自动通过", "无需确认", "无需审核", "不用审批", "跳过审批",
+            "跳过检查", "跳过测试", "skip review", "auto approve",
+            "直接发布", "直接部署", "临时权限", "提升权限", "elevate",
+            "grant access", "授权",
+        ],
+    }
+
+    # 语义标签映射
+    LABEL_MAP = {
+        "instruction_override": "prompt_injection",
+        "role_manipulation": "jailbreak",
+        "information_extraction": "context_escalation",
+        "harmful_action": "harmful_content",
+        "auth_bypass": "privilege_escalation",
+    }
+
+    def score(self, content: str, context: Optional[dict] = None) -> SemanticScore:
+        if not content or not isinstance(content, str):
+            return SemanticScore(label="safe", confidence=1.0, severity="log",
+                                reason="empty content", model_name="heuristic")
+
+        content_lower = content.lower()
+
+        # 统计每类命中数
+        hits: dict[str, int] = {}
+        total_hits = 0
+        for category, keywords in self.DANGER_CATEGORIES.items():
+            count = 0
+            for kw in keywords:
+                if kw.lower() in content_lower:
+                    count += 1
+            hits[category] = count
+            total_hits += count
+
+        if total_hits == 0:
+            return SemanticScore(label="safe", confidence=1.0, severity="log",
+                                reason="no danger keywords detected", model_name="heuristic")
+
+        # 共现类别数
+        active_categories = sum(1 for c in hits if hits[c] > 0)
+
+        # 关键词密度 (每 100 字符)
+        density = min(1.0, total_hits / max(len(content), 1) * 100)
+
+        # 综合置信度: 密度 × 类别共现
+        confidence = min(1.0, density * (0.4 + 0.2 * active_categories))
+
+        # 判定严重级别
+        if active_categories >= 3 and confidence >= 0.5:
+            severity = "block"
+            label = "multi_category_attack"
+        elif active_categories >= 2 and confidence >= 0.3:
+            severity = "warn"
+            label = "suspicious_pattern"
+        elif confidence >= 0.2:
+            severity = "warn"
+            label = "low_confidence_alert"
+        else:
+            severity = "log"
+            label = "safe"
+
+        # 构建可解释原因
+        top_categories = sorted(hits.items(), key=lambda x: -x[1])[:3]
+        reason_parts = [f"{c}({n})" for c, n in top_categories if n > 0]
+        reason = f"heuristic: {', '.join(reason_parts)} | density={density:.2f} cats={active_categories}"
+
+        return SemanticScore(
+            label=label,
+            confidence=round(confidence, 3),
+            severity=severity,
+            reason=reason,
+            model_name="heuristic",
+        )
+
+
 class PassThroughScorer(SemanticScorer):
     """
-    默认语义检测器: 始终放行。
-    在未接入真实 AI 模型时作为占位实现，不影响现有检测流程。
+    默认语义检测器: 始终放行 (已废弃, 保留用于向后兼容)。
+
+    生产环境请使用 HeuristicScorer。
     """
     def score(self, content: str, context: Optional[dict] = None) -> SemanticScore:
         return SemanticScore(

@@ -33,12 +33,22 @@ def load_env() -> None:
                 os.environ.setdefault(k.strip(), val)
 
 
-def run_cmd(cwd: Path, cmd: list[str], timeout: int | None = None) -> int:
+def run_cmd(cwd: Path, cmd: list[str], timeout: int | None = None, proxy: bool = False) -> int:
     print(f"\n>>> cwd={cwd}")
     print(f">>> {' '.join(cmd)}\n")
     env = os.environ.copy()
     if "prompt_poison" in str(cwd).replace("\\", "/"):
         env["PYTHONPATH"] = str(cwd) + os.pathsep + env.get("PYTHONPATH", "")
+
+    # --proxy: 将所有 LLM 请求路由到 defense_proxy (:8200)
+    if proxy:
+        env["DEEPSEEK_BASE_URL"] = "http://localhost:8200/v1"
+        env["DEEPSEEK_API_BASE"] = "http://localhost:8200"
+        env["LLM_BASE_URL"] = "http://localhost:8200/v1"
+        env["OPENAI_BASE_URL"] = "http://localhost:8200/v1"
+        env["OPENAI_API_BASE"] = "http://localhost:8200/v1"
+        print("[proxy] Routing through defense_proxy at http://localhost:8200")
+
     proc = subprocess.run(cmd, cwd=str(cwd), env=env, timeout=timeout)
     return proc.returncode
 
@@ -47,6 +57,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Run one poison module")
     parser.add_argument("module", help="Module id from registry (e.g. multiagent, defense)")
     parser.add_argument("--timeout", type=int, default=600)
+    parser.add_argument("--proxy", action="store_true", help="Route LLM calls through defense_proxy :8200")
     args = parser.parse_args()
 
     load_env()
@@ -70,7 +81,7 @@ def main() -> int:
     if cmd[0] == "python":
         cmd = [python, *cmd[1:]]
 
-    rc = run_cmd(mod_dir, cmd, timeout=args.timeout)
+    rc = run_cmd(mod_dir, cmd, timeout=args.timeout, proxy=args.proxy)
     if rc != 0:
         return rc
 
