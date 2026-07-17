@@ -1,0 +1,41 @@
+{
+  "agents": [{
+    "agent_ref": "AutoGen_RoundRobin",
+    "protocol": "runner",
+    "runner": {
+      "module": "executors.autogen_executor",
+      "class": "AutoGenExecutor",
+      "init_kwargs": {
+        "orchestrator": "round_robin",
+        "use_full_mas": true,
+        "max_turns": 20
+      }
+    },
+    "expected_domains": [
+      "multi_agent_communication_poisoning",
+      "prompt_context_injection",
+      "tool_output_injection"
+    ],
+    "static_artifacts": {
+      "policy": "AutoGen RoundRobin multi-agent system. Fixed-order RoundRobinGroupChat where agents take turns in sequence: FileSurfer → WebSurfer → Coder → Executor. No LLM-based speaker selection.",
+      "capabilities": {
+        "tool": true,
+        "multi_agent": true,
+        "search": true
+      },
+      "multi_agent": {
+        "roles": ["FileSurfer", "WebSurfer", "Coder", "Executor"],
+        "orchestrator": "RoundRobinGroupChat",
+        "topology": "fixed_rotation"
+      },
+      "tool_schemas": [
+        {"name": "read_local_file", "description": "Read local file contents", "inputSchema": {"file_path": "string"}}
+      ]
+    },
+    "metadata": {
+      "framework": "autogen",
+      "version": "0.7.5",
+      "orchestrator_type": "RoundRobinGroupChat"
+    }
+  }]
+}

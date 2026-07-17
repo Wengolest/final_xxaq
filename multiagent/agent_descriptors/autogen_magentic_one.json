@@ -1,0 +1,55 @@
+{
+  "agents": [{
+    "agent_ref": "AutoGen_MagenticOne",
+    "protocol": "runner",
+    "runner": {
+      "module": "executors.autogen_executor",
+      "class": "AutoGenExecutor",
+      "init_kwargs": {
+        "orchestrator": "selector",
+        "use_full_mas": true,
+        "max_turns": 20
+      }
+    },
+    "expected_domains": [
+      "multi_agent_communication_poisoning",
+      "prompt_context_injection",
+      "tool_output_injection",
+      "planning_poisoning",
+      "search_narrative_poisoning"
+    ],
+    "static_artifacts": {
+      "policy": "AutoGen Magentic-One multi-agent system with SelectorGroupChat orchestrator. 4 agents: FileSurfer (reads local files), WebSurfer (fetches URLs), Coder (writes Python/bash code), Executor (runs code locally without Docker). Agents communicate through a central orchestrator that selects the next speaker.",
+      "capabilities": {
+        "tool": true,
+        "multi_agent": true,
+        "planning": true,
+        "search": true
+      },
+      "multi_agent": {
+        "roles": ["FileSurfer", "WebSurfer", "Coder", "Executor"],
+        "orchestrator": "SelectorGroupChat",
+        "topology": "central_selector",
+        "message_passing": "shared_conversation"
+      },
+      "tool_schemas": [
+        {"name": "read_local_file", "description": "Read a local file and return its contents", "inputSchema": {"file_path": "string"}},
+        {"name": "list_directory", "description": "List files in a local directory", "inputSchema": {"dir_path": "string"}},
+        {"name": "fetch_url", "description": "Fetch a web page URL and return its content", "inputSchema": {"url": "string"}}
+      ],
+      "planning": {
+        "fields": ["task", "selected_agent", "reasoning", "action"]
+      },
+      "search": {
+        "source": "web_search",
+        "tool": "fetch_url"
+      }
+    },
+    "metadata": {
+      "framework": "autogen",
+      "version": "0.7.5",
+      "orchestrator_type": "SelectorGroupChat",
+      "paper_ref": "Magentic-One"
+    }
+  }]
+}

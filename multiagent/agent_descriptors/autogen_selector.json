@@ -1,0 +1,47 @@
+{
+  "agents": [{
+    "agent_ref": "AutoGen_Selector",
+    "protocol": "runner",
+    "runner": {
+      "module": "executors.autogen_executor",
+      "class": "AutoGenExecutor",
+      "init_kwargs": {
+        "orchestrator": "selector",
+        "use_full_mas": true,
+        "max_turns": 20
+      }
+    },
+    "expected_domains": [
+      "multi_agent_communication_poisoning",
+      "prompt_context_injection",
+      "tool_output_injection",
+      "planning_poisoning"
+    ],
+    "static_artifacts": {
+      "policy": "AutoGen Selector-based multi-agent system. LLM-powered SelectorGroupChat picks the next speaker based on conversation context. 4 agents: FileSurfer, WebSurfer, Coder, Executor with local code execution.",
+      "capabilities": {
+        "tool": true,
+        "multi_agent": true,
+        "planning": true,
+        "search": true
+      },
+      "multi_agent": {
+        "roles": ["FileSurfer", "WebSurfer", "Coder", "Executor"],
+        "orchestrator": "SelectorGroupChat",
+        "topology": "llm_selection"
+      },
+      "tool_schemas": [
+        {"name": "read_local_file", "description": "Read local file contents", "inputSchema": {"file_path": "string"}},
+        {"name": "fetch_url", "description": "Fetch URL content", "inputSchema": {"url": "string"}}
+      ],
+      "planning": {
+        "fields": ["task", "selected_agent", "reasoning"]
+      }
+    },
+    "metadata": {
+      "framework": "autogen",
+      "version": "0.7.5",
+      "orchestrator_type": "SelectorGroupChat"
+    }
+  }]
+}

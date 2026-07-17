@@ -1,0 +1,31 @@
+# MAS Attack Platform — Dependencies
+# ======================================
+
+# --- Core ---
+python-dotenv>=1.0.0
+
+# --- AgentEVAL Tool1+Tool2 (from E:\wangan\AgentEVAL-Risk-Tools) ---
+# Tool1/Tool2 are imported as a local package (added to sys.path).
+# Their dependencies are listed in AgentEVAL-Risk-Tools/requirements.txt.
+# Key transitive deps: openai, jsonschema
+
+# --- AutoGen (for autogen_executor, real execution) ---
+# The autogen executor wraps E:\wangan\autogen\mas_safety.
+# Install the autogen packages if you need real execution:
+# autogen-agentchat>=0.7.5
+# autogen-core>=0.7.5
+# autogen-ext[openai]>=0.7.5
+
+# --- CrewAI (for crewai_executor, real execution) ---
+# Uninstall and reinstall if you hit tool-import issues:
+# pip uninstall crewai crewai-tools -y
+# pip install crewai>=0.100.0
+# crewai>=0.100.0
+
+# --- MetaGPT (for metagpt_executor, real execution) ---
+# metagpt>=0.8.0
+
+# --- LLM APIs ---
+# The platform uses the DeepSeek API by default (set DEEPSEEK_API_KEY in .env).
+# For OpenAI models, set OPENAI_API_KEY instead.
+# openai>=1.0.0

@@ -1,0 +1,48 @@
+{
+  "agents": [{
+    "agent_ref": "CrewAI_Default",
+    "protocol": "runner",
+    "runner": {
+      "module": "executors.crewai_executor",
+      "class": "CrewAIExecutor",
+      "init_kwargs": {
+        "process": "sequential",
+        "max_turns": 15
+      }
+    },
+    "expected_domains": [
+      "multi_agent_communication_poisoning",
+      "prompt_context_injection",
+      "tool_output_injection",
+      "planning_poisoning",
+      "search_narrative_poisoning"
+    ],
+    "static_artifacts": {
+      "policy": "CrewAI multi-agent system with sequential process. Agents: FileReaderAgent (reads local files), WebScraperAgent (fetches URLs), CoderAgent (writes code), ExecutorAgent (runs code). Agents delegate tasks through CrewAI's built-in delegation mechanism.",
+      "capabilities": {
+        "tool": true,
+        "multi_agent": true,
+        "planning": true,
+        "search": true
+      },
+      "multi_agent": {
+        "roles": ["FileReaderAgent", "WebScraperAgent", "CoderAgent", "ExecutorAgent"],
+        "orchestrator": "CrewAI_SequentialProcess",
+        "topology": "sequential_delegation"
+      },
+      "tool_schemas": [
+        {"name": "read_file", "description": "Read local file contents", "inputSchema": {"file_path": "string"}},
+        {"name": "scrape_url", "description": "Scrape web page content", "inputSchema": {"url": "string"}},
+        {"name": "execute_code", "description": "Execute Python code", "inputSchema": {"code": "string"}}
+      ],
+      "planning": {
+        "fields": ["task_description", "assigned_agent", "expected_output"]
+      }
+    },
+    "metadata": {
+      "framework": "crewai",
+      "version": "latest",
+      "process": "sequential"
+    }
+  }]
+}
