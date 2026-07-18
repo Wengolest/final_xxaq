@@ -294,7 +294,7 @@ class MemoryControl:
                 )
             rule_matches = engine.evaluate(ctx.content, context_dict, layer_prefix="MC")
 
-        return self._summarize(checks, rule_matches, t_start, ctx.trust_level)
+        return self._summarize(checks, rule_matches, t_start, ctx.trust_level, content=ctx.content)
 
     # ---- 写入路径检查 ----
 
@@ -603,11 +603,12 @@ class MemoryControl:
             ))
         return flags
 
-    def _summarize(self, checks, rule_matches, t_start, trust_level):
+    def _summarize(self, checks, rule_matches, t_start, trust_level, content=None):
         all_flags = self._checks_to_flags(checks) + self._rule_matches_to_flags(rule_matches)
         return compute_layer_result(
             layer=DefenseLayer.MEMORY_CONTROL,
             flags=all_flags,
             trust_in=trust_level,
             t_start=t_start,
+            content=content,
         )

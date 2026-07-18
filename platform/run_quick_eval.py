@@ -28,6 +28,7 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--offline-only", action="store_true", help="Skip modules that need LLM API")
     parser.add_argument("--modules", default="", help="Comma-separated module ids (default: all enabled)")
+    parser.add_argument("--proxy", action="store_true", help="Route all LLM calls through defense_proxy :8200")
     args = parser.parse_args()
 
     with open(REGISTRY, encoding="utf-8") as f:
@@ -55,7 +56,10 @@ def main() -> int:
         print("=" * 70)
         print(f"MODULE: {mid} — {mod.get('label', mid)}")
         print("=" * 70)
-        rc = subprocess.call([sys.executable, str(RUN_MODULE), mid])
+        cmd = [sys.executable, str(RUN_MODULE), mid]
+        if args.proxy:
+            cmd.append("--proxy")
+        rc = subprocess.call(cmd)
         if rc != 0:
             failed.append(mid)
             print(f"[FAIL] {mid} exit={rc}")
