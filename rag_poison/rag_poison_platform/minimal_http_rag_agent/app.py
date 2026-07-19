@@ -274,16 +274,13 @@ def _fallback_answer(question: str, retrieved: List[Dict[str, Any]]) -> str:
 
 
 def _call_deepseek(question: str, retrieved: List[Dict[str, Any]]) -> str:
-    """通过 OpenAI SDK 调用 DeepSeek（自动兼容 defense_proxy 代理）。
+    import urllib.request
 
-    当 DEEPSEEK_BASE_URL 指向 defense_proxy (:8200/v1) 时，
-    代理会对输入/输出执行五层防御检查，block 时会在响应中返回 error 字段。
-    """
     api_key = os.environ.get("DEEPSEEK_API_KEY") or os.environ.get("OPENAI_API_KEY")
     if not api_key:
         return _fallback_answer(question, retrieved)
 
-    base_url = os.environ.get("DEEPSEEK_BASE_URL", "https://api.deepseek.com/v1").rstrip("/")
+    base_url = os.environ.get("DEEPSEEK_BASE_URL", "https://api.deepseek.com").rstrip("/")
     model = os.environ.get("DEEPSEEK_MODEL", "deepseek-chat")
     context = "\n\n".join(
         f"[Source {r['rank']} | {r['source']} | score={r['score']:.4f}]\n{r['text']}"
@@ -295,18 +292,30 @@ def _call_deepseek(question: str, retrieved: List[Dict[str, Any]]) -> str:
         f"问题: {question}\n\n"
         "请明确给出风险等级（高/中/低）及是否需要安全加固。"
     )
-
+    payload = {
+        "model": model,
+        "messages": [{"role": "user", "content": prompt}],
+        "temperature": 0.1,
+        "max_tokens": 400,
+    }
+    url = (
+        f"{base_url}/v1/chat/completions"
+        if not base_url.endswith("/v1")
+        else f"{base_url}/chat/completions"
+    )
+    req = urllib.request.Request(
+        url,
+        data=json.dumps(payload).encode("utf-8"),
+        headers={
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {api_key}",
+        },
+        method="POST",
+    )
     try:
-        from openai import OpenAI
-
-        client = OpenAI(api_key=api_key, base_url=base_url)
-        resp = client.chat.completions.create(
-            model=model,
-            messages=[{"role": "user", "content": prompt}],
-            temperature=0.1,
-            max_tokens=400,
-        )
-        return (resp.choices[0].message.content or "").strip()
+        with urllib.request.urlopen(req, timeout=120) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+        return data["choices"][0]["message"]["content"].strip()
     except Exception:
         return _fallback_answer(question, retrieved)
 

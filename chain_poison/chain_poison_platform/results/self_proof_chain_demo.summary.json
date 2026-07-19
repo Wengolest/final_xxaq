@@ -1,7 +1,0 @@
-{
-  "experiment": "agent_chain_poison",
-  "limit": 3,
-  "fast": true,
-  "output_dir": "D:\\AI\\rag_poison_exp\\rag_poison_platform\\outputs\\self_proof_chain",
-  "latest_csv": "D:\\AI\\rag_poison_exp\\rag_poison_platform\\outputs\\self_proof_chain\\agent_chain_poison_20260627_223401_2ebec0c7.csv"
-}
